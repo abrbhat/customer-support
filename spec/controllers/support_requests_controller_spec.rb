@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SupportRequestsController, type: :controller do
+  render_views
 
   let(:valid_attributes) {
     {
@@ -21,6 +22,7 @@ RSpec.describe SupportRequestsController, type: :controller do
       get :index, params: {}
 
       expect(response).to have_http_status(:ok)
+      expect(json["support_requests"]).to be_present
     end
   end
 
@@ -28,7 +30,9 @@ RSpec.describe SupportRequestsController, type: :controller do
     it "assigns the requested support_request as @support_request" do
       support_request = SupportRequest.create! valid_attributes
       get :show, params: {id: support_request.to_param}
+
       expect(response).to have_http_status(:ok)
+
     end
   end
 

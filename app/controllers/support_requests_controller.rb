@@ -4,8 +4,6 @@ class SupportRequestsController < ApplicationController
   # GET /support_requests
   def index
     @support_requests = SupportRequest.all
-
-    render json: @support_requests
   end
 
   # GET /support_requests/1
