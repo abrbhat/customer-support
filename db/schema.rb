@@ -10,6 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170203082043) do
+
+  create_table "support_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "subject",     limit: 65535, null: false
+    t.text     "description", limit: 65535
+    t.datetime "closed_at"
+    t.string   "status",                    null: false
+    t.string   "severity"
+    t.string   "category"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
 end
