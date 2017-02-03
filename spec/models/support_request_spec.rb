@@ -5,10 +5,10 @@ RSpec.describe SupportRequest, type: :model do
     @support_request = SupportRequest.new(subject: "Unable to understand")
   end
 
-  subject { @support_request }
-
   describe "when subject is not present" do
-    before { @support_request.subject = " " }
-    it { should_not be_valid }
+    it "should not be valid" do
+      @support_request.subject = " "
+      expect(@support_request).not_to be_valid
+    end
   end
 end
