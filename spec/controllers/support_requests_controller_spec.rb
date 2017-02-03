@@ -23,6 +23,7 @@ RSpec.describe SupportRequestsController, type: :controller do
 
       expect(response).to have_http_status(:ok)
       expect(json["support_requests"]).to be_present
+      expect(json["support_requests"].length).to be 1
     end
   end
 
