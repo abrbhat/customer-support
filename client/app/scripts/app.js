@@ -15,7 +15,8 @@ var app = angular.module('crossoverCustomerSupportApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ng-token-auth'
 ]);
 
 app.config(function ($routeProvider) {
@@ -29,6 +30,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'views/support_requests.html',
       controller: 'SupportRequestCtrl'
     })
+    .when('/sign_in', {
+        templateUrl: 'views/user_sessions/new.html',
+        controller: 'UserSessionsCtrl'
+      })
     .otherwise({
       redirectTo: '/'
     });
