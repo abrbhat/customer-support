@@ -8,23 +8,34 @@
  *
  * Main module of the application.
  */
-angular
-  .module('crossoverCustomerSupportApp', [
+
+var app = angular.module('crossoverCustomerSupportApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
     'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+]);
+
+app.config(function ($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'views/main.html',
+      controller: 'MainCtrl',
+      controllerAs: 'main'
+    })
+    .when('/groups', {
+      templateUrl: 'views/groups.html',
+      controller: 'SupportRequestsCtrl'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+});
+
+app.factory('SupportRequest', ['$resource', function($resource) {
+  return $resource('/api/support_requests/:id.json', null, {
+    'update': { method:'PUT' }
   });
+}]);
