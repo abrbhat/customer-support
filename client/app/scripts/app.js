@@ -25,9 +25,9 @@ app.config(function ($routeProvider) {
       controller: 'MainCtrl',
       controllerAs: 'main'
     })
-    .when('/groups', {
-      templateUrl: 'views/groups.html',
-      controller: 'SupportRequestsCtrl'
+    .when('/support_requests', {
+      templateUrl: 'views/support_requests.html',
+      controller: 'SupportRequestCtrl'
     })
     .otherwise({
       redirectTo: '/'

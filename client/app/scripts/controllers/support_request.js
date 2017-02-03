@@ -11,5 +11,8 @@
 angular.module('crossoverCustomerSupportApp')
   .controller('SupportRequestCtrl', ['$scope', 'SupportRequest',
                                     function ($scope, SupportRequest){
-  $scope.supportRequests = SupportRequest.query();
+  SupportRequest.get().$promise
+  .then(function(response){
+    $scope.supportRequests = response['support_requests'];
+  });
 }]);
