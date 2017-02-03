@@ -3,18 +3,6 @@ require 'rails_helper'
 RSpec.describe SupportRequestsController, type: :controller do
   render_views
 
-  let(:valid_attributes) {
-    {
-      subject: "Unable to understand"
-    }
-  }
-
-  let(:invalid_attributes) {
-    {
-      subject: ""
-    }
-  }
-
   describe "GET #index" do
     it "should return a list of support_requests" do
       create(:support_request)
