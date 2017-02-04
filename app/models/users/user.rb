@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
 
   include DeviseTokenAuth::Concerns::User
 
-  has_many :support_requests
-
   before_save -> { skip_confirmation! }
 
   def is_a_customer?

@@ -1,11 +1,15 @@
 class SupportRequestsController < ApplicationController
   before_filter :authenticate_user!
 
-  before_action :set_support_request, only: [:show, :update, :destroy]
+  before_action :check_and_set_support_request, only: [:show, :update]
 
   # GET /support_requests
   def index
-    @support_requests = SupportRequest.all
+    if current_user.is_admin?
+      @support_requests = SupportRequest.all
+    else
+      @support_requests = current_user.support_requests
+    end
   end
 
   # GET /support_requests/1
@@ -35,8 +39,15 @@ class SupportRequestsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_support_request
+    def check_and_set_support_request
       @support_request = SupportRequest.find(params[:id])
+
+      unless current_user.is_admin? or
+             @support_request.in? current_user.support_requests
+        render json: {"errors" => ["Inaccessible Resource"]},
+               status: :unauthorized
+        return
+      end
     end
 
     # Only allow a trusted parameter "white list" through.
@@ -44,7 +55,6 @@ class SupportRequestsController < ApplicationController
       params.require(:support_request).permit(
         :subject,
         :description,
-        :closed_at,
         :status,
         :severity,
         :category
