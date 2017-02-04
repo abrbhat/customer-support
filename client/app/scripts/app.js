@@ -39,6 +39,12 @@ app.config(function ($routeProvider) {
     });
 });
 
+app.run(['$rootScope', '$location', function($rootScope, $location) {
+  $rootScope.$on('auth:login-success', function() {
+    $location.path('/');
+  });
+}]);
+
 app.factory('SupportRequest', ['$resource', function($resource) {
   return $resource('/api/support_requests/:id.json', null, {
     'update': { method:'PUT' }
