@@ -19,7 +19,7 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  fit('should be true', function(){
+  it('should be true', function(){
     expect(true).toBe(true);
   });
 

@@ -17,7 +17,7 @@ describe('Controller: UserSessionsCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(UserSessionsCtrl.awesomeThings.length).toBe(3);
+  it('should be defined', function () {
+    expect(UserSessionsCtrl).toBeDefined();
   });
 });
