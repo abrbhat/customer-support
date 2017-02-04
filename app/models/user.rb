@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   belongs_to :role
 
+  has_many :support_requests
+
   after_initialize :init
   before_save -> { skip_confirmation! }
 
