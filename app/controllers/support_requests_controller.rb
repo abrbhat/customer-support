@@ -1,6 +1,6 @@
 class SupportRequestsController < ApplicationController
   before_filter :authenticate_user!
-  
+
   before_action :set_support_request, only: [:show, :update, :destroy]
 
   # GET /support_requests
@@ -10,7 +10,7 @@ class SupportRequestsController < ApplicationController
 
   # GET /support_requests/1
   def show
-    render json: @support_request
+
   end
 
   # POST /support_requests
@@ -18,7 +18,7 @@ class SupportRequestsController < ApplicationController
     @support_request = SupportRequest.new(support_request_params)
 
     if @support_request.save
-      render json: @support_request, status: :created, location: @support_request
+      render :show, status: :created
     else
       render json: @support_request.errors, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class SupportRequestsController < ApplicationController
   # PATCH/PUT /support_requests/1
   def update
     if @support_request.update(support_request_params)
-      render json: @support_request
+      render :show, status: :ok
     else
       render json: @support_request.errors, status: :unprocessable_entity
     end
@@ -41,6 +41,13 @@ class SupportRequestsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def support_request_params
-      params.require(:support_request).permit(:subject, :description, :closed_at, :status, :severity, :category)
+      params.require(:support_request).permit(
+        :subject,
+        :description,
+        :closed_at,
+        :status,
+        :severity,
+        :category
+      )
     end
 end

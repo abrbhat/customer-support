@@ -1,3 +1,7 @@
+['customer', 'agent', 'admin'].each do |role|
+  Role.find_or_create_by({name: role})
+end
+
 @support_requests = SupportRequest.create(
   [
     {subject: "request 1"},

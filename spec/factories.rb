@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :role do
+    name "MyString"
+  end
   factory :user do
     email { Faker::Internet.email }
     password { Faker::Internet.password(8) }
