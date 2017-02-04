@@ -1,5 +1,32 @@
 <h1>Support Requests</h1>
 
-<ul ng-repeat="supportRequest in supportRequests">
-  <li>{{supportRequest.subject}}</li>
-</ul>
+<div class = "table-responsive">
+  <table class = "table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Created At</th>
+          <th>Subject</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="supportRequest in supportRequests">
+          <td>#{{supportRequest["id"]}}</td>
+          <td>{{supportRequest["created_at"]}}</td>
+          <td>{{supportRequest["subject"]}}</td>
+          <td>{{supportRequest["category"]}}</td>
+          <td>{{supportRequest["status"]}}</td>
+          <td>
+            <button type="button"
+                    class="btn btn-link"
+                    ng-click = "viewSupportRequest(supportRequest.id)" >
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>
