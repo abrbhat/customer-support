@@ -32,6 +32,8 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'pry'
+  gem 'database_cleaner'
+  gem 'compass'
 end
 
 group :development do
