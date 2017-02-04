@@ -1,7 +1,16 @@
 @customers = Customer.create(
   [
     {
-      email: "user1@test.com",
+      email: "customer1@test.com",
+      password: "password"
+    }
+  ]
+).each(&:confirm)
+
+@agents = Agent.create(
+  [
+    {
+      email: "agent1@test.com",
       password: "password"
     }
   ]
@@ -9,7 +18,7 @@
 
 @support_requests = SupportRequest.create(
   [
-    {subject: "request 1", user: Customer.first},
-    {subject: "request 2", user: Customer.first}
+    {subject: "request 1", customer: Customer.first, agent: Agent.first},
+    {subject: "request 2", customer: Customer.first, agent: Agent.first}
   ]
 )

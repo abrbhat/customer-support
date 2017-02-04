@@ -13,8 +13,4 @@ class SupportRequest < ApplicationRecord
   def init
     self.status ||= "open"
   end
-
-  def user_is_a_customer
-    errors.add(:user, "should be a customer") unless self.user.is_a_customer?
-  end
 end
