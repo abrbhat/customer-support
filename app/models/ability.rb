@@ -2,13 +2,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    case user.role
-    when "customer"
+
+    if user.is_a_customer?
       can :create, SupportRequest
       can :list, SupportRequest
-    when "agent"
+    elsif user.is_an_agent?
       can :manage, SupportRequest
-    when "admin"
+    elsif user.is_admin?
       can :manage, :all
     end
 

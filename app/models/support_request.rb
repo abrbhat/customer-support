@@ -3,7 +3,6 @@ class SupportRequest < ApplicationRecord
 
   validates :user, presence: true
   validates :subject, presence: true
-  validates :user_is_a_customer
 
   after_initialize :init
 
