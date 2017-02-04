@@ -1,4 +1,6 @@
 class SupportRequestsController < ApplicationController
+  before_filter :authenticate_user!
+  
   before_action :set_support_request, only: [:show, :update, :destroy]
 
   # GET /support_requests

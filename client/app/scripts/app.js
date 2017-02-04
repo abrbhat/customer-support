@@ -28,7 +28,12 @@ app.config(function ($routeProvider) {
     })
     .when('/support_requests', {
       templateUrl: 'views/support_requests.html',
-      controller: 'SupportRequestCtrl'
+      controller: 'SupportRequestCtrl',
+      resolve: {
+        auth: ['$auth', function($auth) {
+          return $auth.validateUser();
+        }]
+      }
     })
     .when('/sign_in', {
         templateUrl: 'views/user_sessions/new.html',
