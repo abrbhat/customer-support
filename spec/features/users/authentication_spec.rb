@@ -1,38 +1,31 @@
 require 'rails_helper'
 
 feature 'Authentication', js: true do
-  before do
-    @user = create(:confirmed_user)
-
-    visit '#/sign_in'
-  end
-
   feature 'login' do
-    scenario 'with valid inputs' do
-      fill_in "Email", with: @user.email
-      fill_in "Password", with: @user.password
+    feature 'with valid credentials' do
+      before do
+        @user = create(:confirmed_user)
 
-      find("button", text: "Sign in").click
+        @login_page = LoginPage.new
+        @login_page.visit
+        @login_page.sign_in(@user.email, @user.password)
+      end
 
-      expect(page).to have_content('Sign out')
+      scenario 'sign out option' do
+        expect(page).to have_content('Sign out')
+      end
+
+      scenario 'redirect after login' do
+        expect(page).to have_content('HTML5 Boilerplate')
+      end
     end
 
     scenario 'with invalid credentials' do
-      fill_in "Email", with: "test@example.com"
-      fill_in "Password", with: "random_string"
-
-      find("button", text: "Sign in").click
-
+      @login_page = LoginPage.new
+      @login_page.visit
+      @login_page.sign_in('invalid@test.com', 'not the actual password')
+      
       expect(page).to have_content('Invalid login credentials. Please try again.')
-    end
-
-    scenario 'redirect after login' do
-      fill_in "Email", with: @user.email
-      fill_in "Password", with: @user.password
-
-      find("button", text: "Sign in").click
-
-      expect(page).to have_content('HTML5 Boilerplate')
     end
   end
 end

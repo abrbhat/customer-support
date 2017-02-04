@@ -34,6 +34,10 @@ app.config(function ($routeProvider) {
         templateUrl: 'views/user_sessions/new.html',
         controller: 'UserSessionsCtrl'
       })
+    .when('/sign_up', {
+        templateUrl: 'views/user_registrations/new.html',
+        controller: 'UserRegistrationsCtrl'
+      })
     .otherwise({
       redirectTo: '/'
     });
