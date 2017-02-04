@@ -12,4 +12,4 @@
       password: "password"
     }
   ]
-)
+).each(&:confirm)
