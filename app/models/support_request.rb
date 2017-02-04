@@ -1,7 +1,9 @@
 class SupportRequest < ApplicationRecord
-  belongs_to :user
+  belongs_to :customer
+  belongs_to :agent
 
-  validates :user, presence: true
+  validates :customer, presence: true
+  validates :agent, presence: true
   validates :subject, presence: true
 
   after_initialize :init
