@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name crossoverCustomerSupportApp.controller:UserSessionsCtrl
+ * @name crossoverCustomerSupportApp.controller:UserLoginController
  * @description
- * # UserSessionsCtrl
+ * # UserLoginController
  * Controller of the crossoverCustomerSupportApp
  */
 angular.module('crossoverCustomerSupportApp')
-  .controller('UserSessionsCtrl', ['$scope', function ($scope) {
+  .controller('UserLoginController', ['$scope', function ($scope) {
     $scope.$on('auth:login-error', function(ev, reason) {
       $scope.error = reason.errors[0];
     });

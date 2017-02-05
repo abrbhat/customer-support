@@ -36,12 +36,12 @@ app.config(function ($routeProvider) {
       }
     })
     .when('/sign_in', {
-        templateUrl: 'views/user_sessions/new.html',
-        controller: 'UserSessionsCtrl'
+        templateUrl: 'components/user/login/template.html',
+        controller: 'UserLoginController'
       })
     .when('/sign_up', {
-        templateUrl: 'views/user_registrations/new.html',
-        controller: 'UserRegistrationsCtrl'
+        templateUrl: 'components/user/registration/template.html',
+        controller: 'UserRegistrationController'
       })
     .otherwise({
       redirectTo: '/'

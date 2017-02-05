@@ -1,23 +1,23 @@
 'use strict';
 
-describe('Controller: UserRegistrationsCtrl', function () {
+describe('Controller: UserLoginController', function () {
 
   // load the controller's module
   beforeEach(module('crossoverCustomerSupportApp'));
 
-  var UserRegistrationsCtrl,
+  var UserLoginController,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    UserRegistrationsCtrl = $controller('UserRegistrationsCtrl', {
+    UserLoginController = $controller('UserLoginController', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(UserRegistrationsCtrl.awesomeThings.length).toBe(3);
+  it('should be defined', function () {
+    expect(UserLoginController).toBeDefined();
   });
 });
