@@ -13,5 +13,6 @@
   "globals": {
     "angular": false
   },
-  "-W069": false
+  "-W069": false,
+  "-W098": false
 }
