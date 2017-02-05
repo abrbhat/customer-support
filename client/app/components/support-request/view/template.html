@@ -1,3 +1,7 @@
+<div class = "back-link">
+  <a ui-sref = "supportRequest-list">< Support Requests</a>
+</div>
+
 <div class="well">
   <div class = "row">
     <div class = "col-md-12">
@@ -14,7 +18,7 @@
   </div>
   <div class = "row">
     <div class = "col-md-6">
-      <strong>Created At: </strong> {{supportRequest['created_at']}}
+      <strong>Created At: </strong> {{supportRequest['created_at'] | date:'MMM d, yyyy hh:mm a Z'}}
     </div>
     <div class = "col-md-6">
       <strong>Severity: </strong> {{supportRequest['severity'] | capitalize}}
@@ -30,8 +34,14 @@
   <button class="btn btn-default pull-right"
           type="submit"
           ng-show = "(supportRequest['status'] === 'open')"
-          ng-if = "(currentUser.type === 'Customer')"
           ng-click = "closeSupportRequest()" >
     Close
+  </button>
+  <button class="btn btn-default pull-right"
+          type="submit"
+          ng-show = "(supportRequest['status'] === 'closed')"
+          ng-if = "(currentUser.type === 'Customer')"
+          ng-click = "reopenSupportRequest()" >
+    Reopen
   </button>
 </div>

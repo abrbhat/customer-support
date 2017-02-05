@@ -2,7 +2,7 @@ class SupportRequest < ApplicationRecord
   belongs_to :customer
   belongs_to :agent
 
-  @@status_list = %w{open closed resolved}
+  @@status_list = %w{open closed}
   @@severity_list = %w{low medium high}
 
   validates :customer, presence: true

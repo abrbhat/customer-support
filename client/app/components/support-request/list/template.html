@@ -15,7 +15,7 @@
       <tbody>
         <tr ng-repeat="supportRequest in supportRequests">
           <td>#{{supportRequest["id"]}}</td>
-          <td>{{supportRequest["created_at"]}}</td>
+          <td>{{supportRequest["created_at"] | date:'MMM d, yyyy hh:mm a Z'}}</td>
           <td>{{supportRequest["subject"]}}</td>
           <td>{{supportRequest["category"]}}</td>
           <td>{{supportRequest["status"]}}</td>

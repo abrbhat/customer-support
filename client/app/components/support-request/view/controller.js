@@ -17,7 +17,6 @@ angular.module('crossoverCustomerSupportApp')
   var urlParams = {id: $stateParams.id};
 
   $scope.currentUser = User.current;
-  console.log($scope.currentUser);
 
   SupportRequest.remote.get(urlParams).$promise
   .then(function(supportRequest){
@@ -32,6 +31,23 @@ angular.module('crossoverCustomerSupportApp')
     var postParams = {
       'support_request': {
         status: 'closed'
+      }
+    };
+
+    SupportRequest.remote.update(urlParams, postParams).$promise
+    .then(function(updatedSupportRequest){
+      $scope.supportRequest = updatedSupportRequest;
+    });
+  };
+
+  $scope.reopenSupportRequest = function(){
+    var urlParams = {
+      id: $scope.supportRequest['id']
+    };
+
+    var postParams = {
+      'support_request': {
+        status: 'open'
       }
     };
 
