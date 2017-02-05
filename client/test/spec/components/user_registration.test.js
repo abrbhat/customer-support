@@ -17,7 +17,7 @@ describe('Controller: UserRegistrationController', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(UserRegistrationController.awesomeThings.length).toBe(3);
+  it('should be defined', function () {
+    expect(UserRegistrationController).toBeDefined();
   });
 });

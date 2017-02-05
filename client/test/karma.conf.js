@@ -37,16 +37,20 @@ module.exports = function(config) {
       'bower_components/ng-token-auth/dist/ng-token-auth.js',
 
       // app files
-      'app/scripts/*.js',
       'app/scripts/**/*.js',
+      'app/components/**/*.js',
       'app/**/*.html',
 
+      'test/spec/controllers/**/*.js',
       'test/spec/components/**/*.js',
     ],
 
     // list of files / patterns to exclude
     exclude: [
     ],
+
+    // list of reporters
+    reporters: ['dots'],
 
     // web server port
     port: 8080,
