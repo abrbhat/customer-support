@@ -1,6 +1,7 @@
 class SupportRequestsController < ApplicationController
   before_filter :authenticate_user!
 
+  before_action :check_if_customer, only: :create
   before_action :check_and_set_support_request, only: [:show, :update]
 
   # GET /support_requests
@@ -20,6 +21,10 @@ class SupportRequestsController < ApplicationController
   # POST /support_requests
   def create
     @support_request = SupportRequest.new(support_request_params)
+    @support_request.customer = current_user
+    @support_request.agent = Agent.all
+                                  .sort_by{|agent| agent.support_requests.count}
+                                  .first
 
     if @support_request.save
       render :show, status: :created
@@ -44,6 +49,14 @@ class SupportRequestsController < ApplicationController
 
       unless current_user.is_admin? or
              @support_request.in? current_user.support_requests
+        render json: {"errors" => ["Inaccessible Resource"]},
+               status: :unauthorized
+        return
+      end
+    end
+
+    def check_if_customer
+      unless current_user.is_a_customer?
         render json: {"errors" => ["Inaccessible Resource"]},
                status: :unauthorized
         return

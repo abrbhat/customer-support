@@ -35,9 +35,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   })
 
   .state('supportRequest-view', {
-    url: '/support-request/:id',
+    url: '/support-request/view/:id',
     templateUrl: 'components/support-request/view/template.html',
     controller: 'SupportRequestViewController',
+    resolve: {
+      auth: ['$auth', function($auth) {
+        return $auth.validateUser();
+      }]
+    }
+  })
+
+  .state('supportRequest-create', {
+    url: '/support-request/create',
+    templateUrl: 'components/support-request/create/template.html',
+    controller: 'SupportRequestCreateController',
     resolve: {
       auth: ['$auth', function($auth) {
         return $auth.validateUser();

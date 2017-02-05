@@ -24,7 +24,6 @@ body {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
 
   /* Make the masthead heading the same height as the navigation */
@@ -39,8 +38,8 @@ body {
 /* Custom page footer */
 .footer {
   padding-top: 19px;
+  margin-top: 19px;
   color: #777;
-  border-top: 1px solid #e5e5e5;
 }
 
 .container-narrow > hr {
@@ -91,5 +90,9 @@ body {
 }
 
 .back-link{
+  padding: 10px 0px;
+}
+
+.top-button-container{
   padding: 10px 0px;
 }
