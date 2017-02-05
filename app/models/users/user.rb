@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   include DeviseTokenAuth::Concerns::User
 
+  before_save :set_default_type
+
   before_save -> { skip_confirmation! }
 
   def is_a_customer?
@@ -18,5 +20,11 @@ class User < ActiveRecord::Base
 
   def is_admin?
     return self.type == "Admin"
+  end
+
+  private
+
+  def set_default_type
+    self.type ||= "Customer"
   end
 end
