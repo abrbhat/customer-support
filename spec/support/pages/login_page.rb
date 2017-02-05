@@ -2,7 +2,7 @@ class LoginPage
   include Capybara::DSL
 
   def visit
-    Capybara::visit '#/sign_in'
+    Capybara::visit '#/user/login'
   end
 
   def sign_in(email, password)

@@ -27,41 +27,42 @@ app.config(function ($stateProvider,$urlRouterProvider) {
     templateUrl: 'views/main.html',
     controller: 'MainCtrl',
     controllerAs: 'main'
+  })
+
+  // Support Request States
+  .state('supportRequest-list', {
+    url: '/support-request/list',
+    templateUrl: 'components/support-request/list/template.html',
+    controller: 'SupportRequestListController',
+    resolve: {
+      auth: ['$auth', function($auth) {
+        return $auth.validateUser();
+      }]
+    }
+  })
+
+  // User States
+  .state('user-login', {
+    url: '/user/login',
+    templateUrl: 'components/user/login/template.html',
+    controller: 'UserLoginController'
+  })
+  .state('user-register', {
+    url: '/user/register',
+    templateUrl: 'components/user/registration/template.html',
+    controller: 'UserRegistrationController'
   });
 
-  // $routeProvider
-  //   .when('/', {
-  //     templateUrl: 'views/main.html',
-  //     controller: 'MainCtrl',
-  //     controllerAs: 'main'
-  //   })
-  //   .when('/support_requests', {
-  //     templateUrl: 'components/support-request/list/template.html',
-  //     controller: 'SupportRequestListController',
-  //     resolve: {
-  //       auth: ['$auth', function($auth) {
-  //         return $auth.validateUser();
-  //       }]
-  //     }
-  //   })
-  //   .when('/sign_in', {
-  //       templateUrl: 'components/user/login/template.html',
-  //       controller: 'UserLoginController'
-  //     })
-  //   .when('/sign_up', {
-  //       templateUrl: 'components/user/registration/template.html',
-  //       controller: 'UserRegistrationController'
-  //     })
-  //   .otherwise({
-  //     redirectTo: '/'
-  //   });
-
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/');
 });
 
-app.run(['$rootScope', '$location', function($rootScope, $location) {
+app.run(['$rootScope', '$state', function($rootScope, $state) {
   $rootScope.$on('auth:login-success', function() {
-    $location.path('/');
+    $state.go('supportRequest-list');
+  });
+
+  $rootScope.$on('$stateChangeError', function() {
+    $state.go('user-login');
   });
 }]);
 

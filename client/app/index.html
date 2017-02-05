@@ -39,15 +39,15 @@
 
             <ul class="nav navbar-nav">
               <li ng-class="{'active': isActive('/')}">
-                <a href="#/">Home</a>
+                <a href = "#/" >Home</a>
               </li>
               <li ng-class="{'active': isActive('#/support_requests') }"
                   ng-show="user.id" >
-                <a ng-href="#/support_requests">My Support Requests</a>
+                <a ui-sref = "supportRequest-list">My Support Requests</a>
               </li>
               <li ng-class="{'active': isActive('/sign_in')}"
                   ng-show="!user.id" >
-                  <a ng-href="#/sign_in">Sign in</a>
+                  <a ui-sref = "user-login">Sign in</a>
               </li>
               <li ng-show="user.id">
                 <a ng-click='signOut()'>Sign out</a>
@@ -70,7 +70,7 @@
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
+     <!-- <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
@@ -78,7 +78,7 @@
 
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
-    </script>
+    </script> -->
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->

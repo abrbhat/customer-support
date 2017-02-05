@@ -2,7 +2,7 @@ class RegistrationPage
   include Capybara::DSL
 
   def visit
-    Capybara::visit '#/sign_up'
+    Capybara::visit '#/user/register'
   end
 
   def register(email, password)
