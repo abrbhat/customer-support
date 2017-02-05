@@ -27,8 +27,8 @@ app.config(function ($routeProvider) {
       controllerAs: 'main'
     })
     .when('/support_requests', {
-      templateUrl: 'views/support_requests.html',
-      controller: 'SupportRequestCtrl',
+      templateUrl: 'components/support-request/list/template.html',
+      controller: 'SupportRequestListController',
       resolve: {
         auth: ['$auth', function($auth) {
           return $auth.validateUser();

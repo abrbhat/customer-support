@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc function
- * @name crossoverCustomerSupportApp.controller:SupportRequestCtrl
+ * @name crossoverCustomerSupportApp.controller:SupportRequestListController
  * @description
- * # SupportRequestCtrl
+ * # SupportRequestListController
  * Controller of the crossoverCustomerSupportApp
  */
 
 angular.module('crossoverCustomerSupportApp')
-  .controller('SupportRequestCtrl', ['$scope', 'SupportRequest',
+  .controller('SupportRequestListController', ['$scope', 'SupportRequest',
                                     function ($scope, SupportRequest){
   SupportRequest.get().$promise
   .then(function(response){
