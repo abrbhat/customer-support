@@ -2,7 +2,12 @@
 
 angular.module('crossoverCustomerSupportApp')
 .factory('SupportRequest', ['$resource', function($resource) {
-  return $resource('/api/support_requests/:id.json', null, {
-    'update': { method:'PUT' }
+
+  var remote = $resource('/api/support_requests/:id.json', null, {
+    'update': { method: 'PUT' }
   });
+
+  return {
+    remote: remote
+  };
 }]);

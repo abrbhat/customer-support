@@ -34,6 +34,17 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     }
   })
 
+  .state('supportRequest-view', {
+    url: '/support-request/:id',
+    templateUrl: 'components/support-request/view/template.html',
+    controller: 'SupportRequestViewController',
+    resolve: {
+      auth: ['$auth', function($auth) {
+        return $auth.validateUser();
+      }]
+    }
+  })
+
   // User States
   .state('user-login', {
     url: '/user/login',
@@ -51,8 +62,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 app.run(['$rootScope', '$state', 'User', function($rootScope, $state, User) {
   $rootScope.$on('auth:login-success', function(event, user) {
-    User.current = user;
-    $state.go('supportRequest-list');
+    User.remote.get({id: user.id}).$promise
+    .then(function(user){
+      User.current = user;
+      $state.go('supportRequest-list');
+    });
   });
 
   $rootScope.$on('auth:logout-success', function() {
@@ -75,3 +89,9 @@ app.run(['$rootScope', '$state', 'User', function($rootScope, $state, User) {
     $state.go('user-login');
   });
 }]);
+
+app.filter('capitalize', function() {
+  return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+  };
+});

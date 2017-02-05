@@ -9,10 +9,14 @@
  */
 
 angular.module('crossoverCustomerSupportApp')
-  .controller('SupportRequestListController', ['$scope', 'SupportRequest',
-                                    function ($scope, SupportRequest){
-  SupportRequest.get().$promise
+  .controller('SupportRequestListController', ['$scope', '$state', 'SupportRequest',
+                                    function ($scope, $state, SupportRequest){
+  SupportRequest.remote.get().$promise
   .then(function(response){
     $scope.supportRequests = response['support_requests'];
   });
+
+  $scope.viewSupportRequest = function(supportRequestId){
+    $state.go('supportRequest-view', {id: supportRequestId});
+  };
 }]);
