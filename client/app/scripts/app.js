@@ -19,15 +19,8 @@ var app = angular.module('crossoverCustomerSupportApp', [
     'ng-token-auth'
 ]);
 
-app.config(function ($stateProvider,$urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
-
-  .state('home', {
-    url: '/home',
-    templateUrl: 'views/main.html',
-    controller: 'MainCtrl',
-    controllerAs: 'main'
-  })
 
   // Support Request States
   .state('supportRequest-list', {
@@ -53,21 +46,32 @@ app.config(function ($stateProvider,$urlRouterProvider) {
     controller: 'UserRegistrationController'
   });
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/user/login');
 });
 
-app.run(['$rootScope', '$state', function($rootScope, $state) {
-  $rootScope.$on('auth:login-success', function() {
+app.run(['$rootScope', '$state', 'User', function($rootScope, $state, User) {
+  $rootScope.$on('auth:login-success', function(event, user) {
+    User.current = user;
     $state.go('supportRequest-list');
   });
 
-  $rootScope.$on('$stateChangeError', function() {
+  $rootScope.$on('auth:logout-success', function() {
     $state.go('user-login');
   });
-}]);
 
-app.factory('SupportRequest', ['$resource', function($resource) {
-  return $resource('/api/support_requests/:id.json', null, {
-    'update': { method:'PUT' }
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams,
+                                               fromState, fromParams) {
+    if(User.current){
+      if((toState.name === 'user-login') ||
+         (toState.name === 'user-register')){
+        event.preventDefault();
+        $state.go('supportRequest-list');
+      }
+    }
+  });
+
+  $rootScope.$on('$stateChangeError', function(event, toState, toParams,
+                                               fromState, fromParams) {
+    $state.go('user-login');
   });
 }]);
