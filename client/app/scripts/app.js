@@ -67,6 +67,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     controller: 'AgentViewController'
   })
 
+  .state('agent-create', {
+    url: '/agent/create/:id',
+    templateUrl: 'components/agent/create/template.html',
+    controller: 'AgentCreateController'
+  })
+
   // User States
   .state('user-login', {
     url: '/user/login',

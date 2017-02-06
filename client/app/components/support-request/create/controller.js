@@ -16,9 +16,6 @@ angular.module('crossoverCustomerSupportApp')
   $scope.currentUser = User.current;
 
   $scope.submitSupportRequest = function(form){
-    console.log("here1");
-    console.log(form);
-
     var postData = {
       'support_request': form
     };

@@ -7,10 +7,16 @@
           ng-show = "(currentUser.type === 'Customer')">
     Create New
   </button>
-
 </div>
 
-<div class = "table-responsive">
+<p ng-if = "(supportRequests.length === 0)">
+  <i>
+    No Support Requests Present
+  </i>
+</p>
+
+<div class = "table-responsive"
+     ng-if = "(supportRequests.length > 0)">
   <table class = "table table-striped">
       <thead>
         <tr>

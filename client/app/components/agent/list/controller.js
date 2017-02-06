@@ -23,4 +23,8 @@ angular.module('crossoverCustomerSupportApp')
   $scope.viewAgent = function(agentId){
     $state.go('agent-view', {id: agentId});
   };
+
+  $scope.createNewAgent = function(){
+    $state.go('agent-create');
+  };
 }]);
