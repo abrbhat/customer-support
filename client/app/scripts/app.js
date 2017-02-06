@@ -19,6 +19,17 @@ var app = angular.module('crossoverCustomerSupportApp', [
     'ng-token-auth'
 ]);
 
+// app.service('authInterceptor', ['$q', function($q) {
+//     var service = this;
+//
+//     service.responseError = function(response) {
+//       if (response.status === 401){
+//         window.location = "#/user/login";
+//       }
+//       return $q.reject(response);
+//     };
+// }]);
+
 app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -88,7 +99,23 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/user/login');
 });
 
-app.run(['$rootScope', '$state', 'User', function($rootScope, $state, User) {
+app.config(function($httpProvider){
+  $httpProvider.interceptors.push(function($q, $location) {
+    return {
+      responseError: function(rejection) {
+        if(rejection.status === 401){
+          $location.url('/user/login');
+        }
+
+        return $q.reject(rejection);
+      }
+    };
+  });
+});
+
+
+app.run(['$rootScope', '$state', '$auth', '$timeout', 'User',
+         function($rootScope, $state, $auth, $timeout, User) {
   $rootScope.$on('auth:login-success', function(event, user) {
     User.remote.get({id: user.id}).$promise
     .then(function(user){
