@@ -11,9 +11,11 @@ class LoginPage
     find("button", text: "Sign in").click
   end
 
-  def complete_login(email, password)
-    visit
+  def self.complete_login(email, password)
+    Capybara::visit '#/user/login'
 
-    sign_in(email, password)
+    Capybara::fill_in "Email", with: email
+    Capybara::fill_in "Password", with: password
+    Capybara::find("button", text: "Sign in").click
   end
 end

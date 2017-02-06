@@ -1,26 +1,45 @@
 require 'rails_helper'
 
-feature 'Support Requests', js: true do
-  before do
+feature 'Support Request List', js: true do
+  before(:each) do
     @customer = create(:customer)
-    @support_requests = create_list(
-      :support_request,
-      3,
-      :customer => @customer
-    )
   end
 
-  feature 'list' do
-    before do
-      @login_page = LoginPage.new
-      @login_page.complete_login(@customer.email, @customer.password)
+  scenario 'user not logged in' do
+    SupportRequestListPage.visit
 
-      @support_request_list_page = SupportRequestListPage.new
-      @support_request_list_page.visit
+    expect(page).not_to have_content('Support Requests')
+  end
+
+  feature 'user logged in' do
+    before(:each) do
+      LoginPage.complete_login(@customer.email, @customer.password)
+
+      expect(page).to have_content('Support Requests')
     end
 
-    scenario 'should be present' do
+    scenario 'support requests are present' do
+      @support_requests = create_list(
+        :support_request,
+        3,
+        :customer => @customer
+      )
+
+      SupportRequestListPage.visit
+
+      page.evaluate_script 'window.location.reload()'
+
       expect(page).to have_content('Support Requests')
+      expect(page).not_to have_content('No Support Requests Present')
+    end
+
+    scenario 'support requests are not present' do
+      SupportRequestListPage.visit
+
+      page.evaluate_script 'window.location.reload()'
+
+      expect(page).to have_content('Support Requests')
+      expect(page).to have_content('No Support Requests Present')
     end
   end
 end

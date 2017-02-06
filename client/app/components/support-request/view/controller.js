@@ -9,9 +9,9 @@
  */
 
 angular.module('crossoverCustomerSupportApp')
-  .controller('SupportRequestViewController', ['$scope', '$stateParams',
+  .controller('SupportRequestViewController', ['$scope', '$stateParams', '$state',
                                                'SupportRequest', 'User',
-                                      function ($scope, $stateParams,
+                                      function ($scope, $stateParams, $state,
                                                 SupportRequest, User){
 
   var urlParams = {id: $stateParams.id};
@@ -21,6 +21,9 @@ angular.module('crossoverCustomerSupportApp')
   SupportRequest.remote.get(urlParams).$promise
   .then(function(supportRequest){
     $scope.supportRequest = supportRequest;
+  })
+  .catch(function(){
+    $state.go('supportRequest-list');
   });
 
   $scope.closeSupportRequest = function(){

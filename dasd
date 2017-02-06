@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /var/www/crossover-customer-support/spec/features/support_requests/view_spec.rb @ line 27 :
+
+    [1;34m22[0m: 
+    [1;34m23[0m:       expect(page).to have_content([31m[1;31m'[0m[31mSupport Requests[1;31m'[0m[31m[0m)
+    [1;34m24[0m:     [32mend[0m
+    [1;34m25[0m: 
+    [1;34m26[0m:     scenario [31m[1;31m'[0m[31msupport request is present[1;31m'[0m[31m[0m [32mdo[0m
+ => [1;34m27[0m:       binding.pry
+    [1;34m28[0m:       visit [31m[1;31m"[0m[31m#/support_request/view/#{@support_request.id}[0m[31m[1;31m"[0m[31m[0m
+    [1;34m29[0m:       [1;34m#SupportRequestViewPage.visit(@support_request.id)[0m
+    [1;34m30[0m: 
+    [1;34m31[0m:       [1;34m#expect(page).not_to have_current_path(/support_request\/view\/[0-9]+/)[0m
+    [1;34m32[0m:       expect(page).to have_content([31m[1;31m'[0m[31mDescription[1;31m'[0m[31m[0m)
+
