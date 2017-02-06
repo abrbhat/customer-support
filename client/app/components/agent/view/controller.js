@@ -22,4 +22,13 @@ angular.module('crossoverCustomerSupportApp')
   $scope.viewSupportRequest = function(supportRequestId){
     $state.go('supportRequest-view', {id: supportRequestId});
   };
+
+  $scope.removeAgent = function(){
+    if(window.confirm("Are you sure?")){
+      Agent.remote.remove({id: $scope.agent['id']}).$promise
+      .then(function(){
+        $state.go('agent-list');
+      });
+    }
+  };
 }]);

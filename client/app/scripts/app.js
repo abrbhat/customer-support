@@ -135,11 +135,6 @@ app.run(['$rootScope', '$state', 'User', function($rootScope, $state, User) {
       }
     }
   });
-
-  $rootScope.$on('$stateChangeError', function(event, toState, toParams,
-                                               fromState, fromParams) {
-    $state.go('user-login');
-  });
 }]);
 
 app.filter('capitalize', function() {

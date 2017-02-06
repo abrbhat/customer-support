@@ -15,6 +15,14 @@
   </div>
 </div>
 
+<div class = "button-row clearfix">
+  <button class="btn btn-default pull-right"
+          type="submit"
+          ng-click = "removeAgent()" >
+    Remove
+  </button>
+</div>
+
 <h2>Support Requests</h2>
 
 <p ng-if = "(agent['support_requests'].length === 0)">
