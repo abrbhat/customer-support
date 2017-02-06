@@ -1,1 +1,1 @@
-json.agents @agents, partial: 'agent', as: :agent
+json.agents @agents, partial: 'user', as: :user

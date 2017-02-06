@@ -3,6 +3,10 @@
     {
       email: "customer1@test.com",
       password: "password"
+    },
+    {
+      email: "customer2@test.com",
+      password: "password"
     }
   ]
 ).each(&:confirm)
@@ -11,6 +15,19 @@
   [
     {
       email: "agent1@test.com",
+      password: "password"
+    },
+    {
+      email: "agent2@test.com",
+      password: "password"
+    }
+  ]
+).each(&:confirm)
+
+@admin = Admin.create(
+  [
+    {
+      email: "admin1@test.com",
       password: "password"
     }
   ]

@@ -39,16 +39,27 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li ng-class="{'active': isActive('#/support_requests') }"
-                  ng-show="user.id" >
+              <li ui-sref-active = "active"
+                  ng-show = "currentUser" >
                 <a ui-sref = "supportRequest-list">Support Requests</a>
               </li>
-              <li ng-class="{'active': isActive('/sign_in')}"
-                  ng-show="!user.id" >
+              <li ui-sref-active = "active"
+                  ng-show = "(currentUser['type'] === 'Admin')" >
+                <a ui-sref = "customer-list">Customers</a>
+              </li>
+              <li ui-sref-active = "active"
+                  ng-show = "(currentUser['type'] === 'Admin')" >
+                <a ui-sref = "agent-list">Agents</a>
+              </li>
+              <li ui-sref-active = "active"
+                  ng-show = "!currentUser" >
                   <a ui-sref = "user-login">Sign in</a>
               </li>
-              <li ng-show="user.id">
-                <a ng-click='signOut()'>Sign out</a>
+              <li ng-show = "currentUser">
+                <a role = "button"
+                   ng-click = 'signOut()'>
+                   Sign out
+                </a>
               </li>
             </ul>
           </div>
@@ -94,11 +105,20 @@
         <!-- Components -->
         <script src="components/user/login/controller.js"></script>
         <script src="components/user/registration/controller.js"></script>
+
         <script src="components/support-request/list/controller.js"></script>
         <script src="components/support-request/view/controller.js"></script>
         <script src="components/support-request/create/controller.js"></script>
 
+        <script src="components/agent/list/controller.js"></script>
+        <script src="components/agent/view/controller.js"></script>
+
+        <script src="components/customer/list/controller.js"></script>
+        <script src="components/customer/view/controller.js"></script>
+
         <!-- Models -->
+        <script src="models/agent.js"></script>
+        <script src="models/customer.js"></script>
         <script src="models/support-request.js"></script>
         <script src="models/user.js"></script>
 

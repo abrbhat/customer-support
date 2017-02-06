@@ -26,34 +26,45 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   .state('supportRequest-list', {
     url: '/support-request/list',
     templateUrl: 'components/support-request/list/template.html',
-    controller: 'SupportRequestListController',
-    resolve: {
-      auth: ['$auth', function($auth) {
-        return $auth.validateUser();
-      }]
-    }
+    controller: 'SupportRequestListController'
   })
 
   .state('supportRequest-view', {
     url: '/support-request/view/:id',
     templateUrl: 'components/support-request/view/template.html',
-    controller: 'SupportRequestViewController',
-    resolve: {
-      auth: ['$auth', function($auth) {
-        return $auth.validateUser();
-      }]
-    }
+    controller: 'SupportRequestViewController'
   })
 
   .state('supportRequest-create', {
     url: '/support-request/create',
     templateUrl: 'components/support-request/create/template.html',
-    controller: 'SupportRequestCreateController',
-    resolve: {
-      auth: ['$auth', function($auth) {
-        return $auth.validateUser();
-      }]
-    }
+    controller: 'SupportRequestCreateController'
+  })
+
+  // Customer States
+  .state('customer-list', {
+    url: '/customer/list',
+    templateUrl: 'components/customer/list/template.html',
+    controller: 'CustomerListController'
+  })
+
+  .state('customer-view', {
+    url: '/customer/view/:id',
+    templateUrl: 'components/customer/view/template.html',
+    controller: 'CustomerViewController'
+  })
+
+  // Agent States
+  .state('agent-list', {
+    url: '/agent/list',
+    templateUrl: 'components/agent/list/template.html',
+    controller: 'AgentListController'
+  })
+
+  .state('agent-view', {
+    url: '/agent/view/:id',
+    templateUrl: 'components/agent/view/template.html',
+    controller: 'AgentViewController'
   })
 
   // User States
@@ -76,11 +87,28 @@ app.run(['$rootScope', '$state', 'User', function($rootScope, $state, User) {
     User.remote.get({id: user.id}).$promise
     .then(function(user){
       User.current = user;
+      $rootScope.currentUser = user;
       $state.go('supportRequest-list');
     });
   });
 
+  $rootScope.$on('auth:validation-success', function(event, user) {
+    if(!User.current){
+      User.remote.get({id: user.id}).$promise
+      .then(function(user){
+        User.current = user;
+        $rootScope.currentUser = user;
+      });
+    }
+  });
+
+  $rootScope.$on('auth:validation-error', function(event, user) {
+    $state.go('user-login');
+  });
+
   $rootScope.$on('auth:logout-success', function() {
+    User.current = null;
+    $rootScope.currentUser = null;
     $state.go('user-login');
   });
 
@@ -91,6 +119,13 @@ app.run(['$rootScope', '$state', 'User', function($rootScope, $state, User) {
          (toState.name === 'user-register')){
         event.preventDefault();
         $state.go('supportRequest-list');
+      }
+    }
+    else if ((toState.name !== 'user-login') &&
+             (toState.name !== 'user-register')){
+      if(fromState.name !== ''){
+        event.preventDefault();
+        $state.go('user-login');
       }
     }
   });

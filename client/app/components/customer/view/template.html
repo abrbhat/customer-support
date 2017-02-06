@@ -1,0 +1,46 @@
+<div class = "back-link">
+  <a ui-sref = "customer-list">< Customers</a>
+</div>
+
+<div class="well">
+  <div class = "row">
+    <div class = "col-md-6">
+      <strong>Id: </strong> {{customer['id']}}
+    </div>
+    <div class = "col-md-6">
+      <strong>Email: </strong> {{customer['email']}}
+    </div>
+  </div>
+</div>
+
+<h1>Support Requests</h1>
+
+<div class = "table-responsive">
+  <table class = "table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Created At</th>
+          <th>Subject</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="supportRequest in customer['support_requests']">
+          <td>#{{supportRequest["id"]}}</td>
+          <td>{{supportRequest["created_at"] | date:'MMM d, yyyy hh:mm a Z'}}</td>
+          <td>{{supportRequest["subject"]}}</td>
+          <td>{{supportRequest["category"]}}</td>
+          <td>{{supportRequest["status"]}}</td>
+          <td>
+            <a role = "button"
+               ng-click = "viewSupportRequest(supportRequest.id)" >
+              View
+            </a>
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>
