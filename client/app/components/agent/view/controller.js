@@ -28,6 +28,9 @@ angular.module('crossoverCustomerSupportApp')
       Agent.remote.remove({id: $scope.agent['id']}).$promise
       .then(function(){
         $state.go('agent-list');
+      })
+      .catch(function(error){
+        window.alert('Cannot Delete Last Agent');
       });
     }
   };

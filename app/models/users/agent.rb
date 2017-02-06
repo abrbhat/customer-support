@@ -14,7 +14,7 @@ class Agent < User
   def assign_support_requests
     @support_requests = self.support_requests
 
-    return true if @support_requests.blank?
+    return if @support_requests.blank?
 
     @remaining_agents = Agent.all - [self]
 
