@@ -15,7 +15,7 @@
     <!-- endbuild -->
   </head>
   <body ng-app="crossoverCustomerSupportApp"
-        class = "container" >
+        class = "container-fluid" >
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -23,7 +23,7 @@
     <!-- Add your site or application content here -->
     <div class="header">
       <div class="navbar navbar-default" role="navigation">
-        <div class="container">
+        <div class="container-fluid">
           <div class="navbar-header">
 
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
@@ -33,18 +33,15 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">crossoverCustomerSupport</a>
+            <a class="navbar-brand" href="#/">Skype Customer Support</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li ng-class="{'active': isActive('/')}">
-                <a href = "#/" >Home</a>
-              </li>
               <li ng-class="{'active': isActive('#/support_requests') }"
                   ng-show="user.id" >
-                <a ui-sref = "supportRequest-list">My Support Requests</a>
+                <a ui-sref = "supportRequest-list">Support Requests</a>
               </li>
               <li ng-class="{'active': isActive('/sign_in')}"
                   ng-show="!user.id" >
@@ -59,7 +56,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
       <div ui-view=""></div>
     </div>
 

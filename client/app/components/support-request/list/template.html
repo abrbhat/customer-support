@@ -30,11 +30,10 @@
           <td>{{supportRequest["category"]}}</td>
           <td>{{supportRequest["status"]}}</td>
           <td>
-            <button type="button"
-                    class="btn btn-link"
-                    ng-click = "viewSupportRequest(supportRequest.id)" >
+            <a role = "button"
+               ng-click = "viewSupportRequest(supportRequest.id)" >
               View
-            </button>
+            </a>
           </td>
         </tr>
       </tbody>

@@ -7,9 +7,9 @@ class SupportRequestsController < ApplicationController
   # GET /support_requests
   def index
     if current_user.is_admin?
-      @support_requests = SupportRequest.all
+      @support_requests = SupportRequest.all.sort.reverse
     else
-      @support_requests = current_user.support_requests
+      @support_requests = current_user.support_requests.sort.reverse
     end
   end
 

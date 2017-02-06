@@ -10,26 +10,6 @@ class CustomersController < ApplicationController
     @customers = Customer.all
   end
 
-  # POST /customers
-  def create
-    @customer = Customer.new(customer_params)
-
-    if @customer.save
-      render :show, status: :created
-    else
-      render json: @customer.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /customers/1
-  def update
-    if @customer.update(customer_params)
-      render :show, status: :ok
-    else
-      render json: @customer.errors, status: :unprocessable_entity
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def check_if_admin
