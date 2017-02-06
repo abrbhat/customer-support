@@ -10,4 +10,10 @@ class LoginPage
     fill_in "Password", with: password
     find("button", text: "Sign in").click
   end
+
+  def complete_login(email, password)
+    visit
+
+    sign_in(email, password)
+  end
 end

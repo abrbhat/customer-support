@@ -1,23 +1,26 @@
 require 'rails_helper'
 
-feature 'Authentication', js: true do
+feature 'Support Requests', js: true do
   before do
     @customer = create(:customer)
     @support_requests = create_list(
-      :support_requests,
+      :support_request,
+      3,
       :customer => @customer
     )
   end
 
-  feature 'support_requests' do
-    feature 'list' do
-      before do
-        login_as(@customer, :scope => :user)
-      end
+  feature 'list' do
+    before do
+      @login_page = LoginPage.new
+      @login_page.complete_login(@customer.email, @customer.password)
 
-      scenario 'sign out option' do
-        expect(page).to have_content('Sign out')
-      end
+      @support_request_list_page = SupportRequestListPage.new
+      @support_request_list_page.visit
+    end
+
+    scenario 'should be present' do
+      expect(page).to have_content('Support Requests')
     end
   end
 end

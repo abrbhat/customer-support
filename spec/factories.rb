@@ -4,27 +4,23 @@ FactoryGirl.define do
     password { Faker::Internet.password(8) }
     password_confirmation { password }
     type "Customer"
+  end
 
-    factory :confirmed_user do
-      after(:create) do |user, evaluator|
-        user.confirm
-      end
-    end
+  factory :customer, parent: :user, class: 'Customer' do
+    type "Customer"
+  end
 
-    factory :customer do
-      type "Customer"
-    end
+  factory :agent, parent: :user, class: 'Agent' do
+    type "Agent"
+  end
 
-    factory :agent do
-      type "Agent"
-    end
-
-    factory :admin do
-      type "Admin"
-    end
+  factory :admin, parent: :user, class: 'Admin' do
+    type "Admin"
   end
 
   factory :support_request do
     subject "New Support Request"
+    customer
+    agent
   end
 end
