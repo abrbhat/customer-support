@@ -2,6 +2,8 @@
   <a ui-sref = "customer-list">< Customers</a>
 </div>
 
+<h1>Customer</h1>
+
 <div class="well">
   <div class = "row">
     <div class = "col-md-6">
@@ -13,7 +15,7 @@
   </div>
 </div>
 
-<h1>Support Requests</h1>
+<h2>Support Requests</h2>
 
 <div class = "table-responsive">
   <table class = "table table-striped">
@@ -23,6 +25,7 @@
           <th>Created At</th>
           <th>Subject</th>
           <th>Category</th>
+          <th>Assigned To</th>
           <th>Status</th>
           <th></th>
         </tr>
@@ -33,6 +36,7 @@
           <td>{{supportRequest["created_at"] | date:'MMM d, yyyy hh:mm a Z'}}</td>
           <td>{{supportRequest["subject"]}}</td>
           <td>{{supportRequest["category"]}}</td>
+          <td>{{supportRequest["agent"]}}</td>
           <td>{{supportRequest["status"]}}</td>
           <td>
             <a role = "button"

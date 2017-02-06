@@ -13,12 +13,35 @@
 
     <select class="form-control"
             name = "category"
-            ng-model = "supportRequestForm.category">
-      <option value = "installation_and_setup" selected>
+            ng-model = "supportRequestForm.category"
+            required = "required" >
+      <option value = "" disabled="">
+        Select One
+      </option>
+      <option value = "installation_and_setup" >
         Installation and Setup
       </option>
       <option value = "voice_quality">Voice Quality</option>
       <option value = "video_quality">Video Quality</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="severity">Severity*</label>
+
+    <select class="form-control"
+            name = "severity"
+            ng-model = "supportRequestForm.severity"
+            required = "required" >
+      <option value = "" disabled="">
+        Select One
+      </option>
+      <option value = "low"
+              selected="selected">
+        Low
+      </option>
+      <option value = "medium">Medium</option>
+      <option value = "high">High</option>
     </select>
   </div>
 

@@ -2,6 +2,8 @@
   <a ui-sref = "agent-list">< Agents</a>
 </div>
 
+<h1>Agent</h1>
+
 <div class="well">
   <div class = "row">
     <div class = "col-md-6">
@@ -13,7 +15,7 @@
   </div>
 </div>
 
-<h1>Support Requests</h1>
+<h2>Support Requests</h2>
 
 <div class = "table-responsive">
   <table class = "table table-striped">
@@ -21,6 +23,7 @@
         <tr>
           <th>Id</th>
           <th>Created At</th>
+          <th>Created By</th>
           <th>Subject</th>
           <th>Category</th>
           <th>Status</th>
@@ -31,6 +34,7 @@
         <tr ng-repeat="supportRequest in agent['support_requests']">
           <td>#{{supportRequest["id"]}}</td>
           <td>{{supportRequest["created_at"] | date:'MMM d, yyyy hh:mm a Z'}}</td>
+          <td>{{supportRequest["customer"]}}</td>
           <td>{{supportRequest["subject"]}}</td>
           <td>{{supportRequest["category"]}}</td>
           <td>{{supportRequest["status"]}}</td>

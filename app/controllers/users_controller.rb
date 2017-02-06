@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
 
   before_action :check_and_set_user
-  before_action :check_if_admin_or_self_customer
+  before_action :check_if_admin_or_self
 
   # GET /users/1
   def show
@@ -15,9 +15,9 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    def check_if_admin_or_self_customer
+    def check_if_admin_or_self
       unless current_user.is_admin? or
-             (current_user == @user and @user.is_a_customer?)
+             (current_user == @user)
         render json: {"errors" => ["Inaccessible Resource"]},
                status: :unauthorized
         return

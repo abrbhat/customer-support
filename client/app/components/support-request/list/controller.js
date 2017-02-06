@@ -10,11 +10,9 @@
 
 angular.module('crossoverCustomerSupportApp')
   .controller('SupportRequestListController', ['$scope', '$state',
-                                               'SupportRequest', 'User',
-                                    function ($scope, $state, SupportRequest,
-                                              User){
-  $scope.currentUser = User.current;
-
+                                               'SupportRequest',
+                                               function ($scope, $state,
+                                               SupportRequest){  
   SupportRequest.remote.get().$promise
   .then(function(response){
     $scope.supportRequests = response['support_requests'];

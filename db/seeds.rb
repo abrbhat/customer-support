@@ -35,7 +35,19 @@
 
 @support_requests = SupportRequest.create(
   [
-    {subject: "request 1", customer: Customer.first, agent: Agent.first},
-    {subject: "request 2", customer: Customer.first, agent: Agent.first}
+    {
+      subject: "Installation Error",
+      customer: Customer.first,
+      agent: Agent.first,
+      category: "installation_and_setup",
+      description: "I am having trouble installing Skype. How do I do that?"
+    },
+    {
+      subject: "Unclear Voice",
+      customer: Customer.first,
+      agent: Agent.first,
+      category: "voice_quality",
+      description: "The voice quality is not very good. Any way to improve it?"
+    }
   ]
 )

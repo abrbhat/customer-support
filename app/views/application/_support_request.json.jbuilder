@@ -10,4 +10,4 @@ json.(support_request,
 )
 
 json.customer support_request.customer.email
-json.agent support_request.agent.name
+json.agent support_request.agent.email.split("@")[0]

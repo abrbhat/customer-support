@@ -16,8 +16,14 @@
         <tr>
           <th>Id</th>
           <th>Created At</th>
+          <th ng-if = "(currentUser['type'] !== 'Customer')">
+            Created By
+          </th>
           <th>Subject</th>
           <th>Category</th>
+          <th ng-if = "(currentUser['type'] === 'Admin')">
+            Assigned To
+          </th>
           <th>Status</th>
           <th></th>
         </tr>
@@ -26,8 +32,14 @@
         <tr ng-repeat="supportRequest in supportRequests">
           <td>#{{supportRequest["id"]}}</td>
           <td>{{supportRequest["created_at"] | date:'MMM d, yyyy hh:mm a Z'}}</td>
+          <td ng-if = "(currentUser['type'] !== 'Customer')">
+            {{supportRequest["customer"]}}
+          </td>
           <td>{{supportRequest["subject"]}}</td>
           <td>{{supportRequest["category"]}}</td>
+          <td ng-if = "(currentUser['type'] === 'Admin')">
+            {{supportRequest["agent"]}}
+          </td>
           <td>{{supportRequest["status"]}}</td>
           <td>
             <a role = "button"

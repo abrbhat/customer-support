@@ -28,6 +28,16 @@
     <div class = "col-md-6">
       <strong>Created By: </strong> {{supportRequest['customer']}}
     </div>
+    <div class = "col-md-6"
+         ng-if = "(currentUser['type'] !== 'Customer')">
+      <strong>Assigned To: </strong> {{supportRequest['agent']}}
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-12">
+      <strong>Description: </strong> {{supportRequest['description']}}
+    </div>
+  </div>
 </div>
 
 <div class = "button-row clearfix">
