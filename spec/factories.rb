@@ -22,5 +22,7 @@ FactoryGirl.define do
     subject "New Support Request"
     customer
     agent
+    status "open"
+    category "installation_and_setup"
   end
 end

@@ -4,6 +4,7 @@ class SupportRequest < ApplicationRecord
 
   @@status_list = %w{open closed}
   @@severity_list = %w{low medium high}
+  @@category_list = %w{installation_and_setup voice_quality video_quality}
 
   validates :customer, presence: true
   validates :subject, presence: true
@@ -18,6 +19,12 @@ class SupportRequest < ApplicationRecord
             :inclusion => {
               :in => @@severity_list,
               :message => "%{value} is not a valid severity"
+            }
+  validates :category,
+            :presence => true,
+            :inclusion => {
+              :in => @@category_list,
+              :message => "%{value} is not a valid category"
             }
 
   after_initialize :init
