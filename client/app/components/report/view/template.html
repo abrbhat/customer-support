@@ -29,7 +29,9 @@
           <th ng-if = "(currentUser['type'] === 'Admin')">
             Assigned To
           </th>
-          <th>Status</th>
+          <th>
+            Closed At
+          </th>
           <th ng-if = "(currentUser.type === 'Admin')"></th>
         </tr>
       </thead>
@@ -47,7 +49,11 @@
           <td ng-if = "(currentUser['type'] === 'Admin')">
             {{supportRequest["agent"]}}
           </td>
-          <td>{{supportRequest["status"]}}</td>
+          <td>
+            <div ng-if = "supportRequest['status'] === 'closed'">
+              {{supportRequest["closed_at"] | date:'MMM d, yyyy hh:mm a Z'}}
+            </div>
+          </td>
           <td ng-if = "(currentUser.type === 'Admin')">
             <a role = "button"
                ng-click = "viewSupportRequest(supportRequest.id)" >

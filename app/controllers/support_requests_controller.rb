@@ -26,7 +26,10 @@ class SupportRequestsController < ApplicationController
         }
       end
 
-    else
+    elsif current_user.is_an_agent?
+      @support_requests = current_user.open_support_requests
+                                      .sort.reverse
+    elsif current_user.is_a_customer?
       @support_requests = current_user.support_requests.sort.reverse
     end
   end
@@ -55,13 +58,6 @@ class SupportRequestsController < ApplicationController
     else
       render json: @support_request.errors, status: :unprocessable_entity
     end
-  end
-
-  def download_report
-    send_file Report.generate,
-              :filename => "report.pdf",
-              :type => "application/pdf",
-              :disposition  => "inline"
   end
 
   private

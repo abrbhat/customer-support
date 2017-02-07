@@ -38,6 +38,9 @@
             Assigned To
           </th>
           <th>Status</th>
+          <th ng-if = "(currentUser['type'] !== 'Agent')">
+            Closed At
+          </th>
           <th></th>
         </tr>
       </thead>
@@ -56,6 +59,11 @@
             {{supportRequest["agent"]}}
           </td>
           <td>{{supportRequest["status"]}}</td>
+          <td ng-if = "(currentUser['type'] !== 'Agent')">
+            <div ng-if = "supportRequest['status'] === 'closed'">
+              {{supportRequest["closed_at"] | date:'MMM d, yyyy hh:mm a Z'}}
+            </div>
+          </td>
           <td>
             <a role = "button"
                ng-click = "viewSupportRequest(supportRequest.id)" >

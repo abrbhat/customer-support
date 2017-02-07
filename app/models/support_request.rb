@@ -29,7 +29,11 @@ class SupportRequest < ApplicationRecord
 
   after_initialize :init
   before_save :set_or_unset_closed_at
-  after_save :assign_or_deassign_agent
+  after_save :assign_agent
+
+  def is_open?
+    return self.status == "open"
+  end
 
   private
 
@@ -48,16 +52,12 @@ class SupportRequest < ApplicationRecord
     end
   end
 
-  def assign_or_deassign_agent
+  def assign_agent
     if self.status == "open" and
        self.agent.blank?
       self.agent = Agent.all
                         .sort_by{|agent| agent.support_requests.count}
                         .first
-      self.save
-    elsif self.status == "closed" and
-          self.agent.present?
-      self.agent_id = nil
       self.save
     end
   end

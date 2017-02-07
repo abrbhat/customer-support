@@ -5,6 +5,10 @@ class Agent < User
 
   before_destroy :assign_support_requests
 
+  def open_support_requests
+    return self.support_requests.select{|support_request| support_request.is_open?}
+  end
+
   private
 
   def init

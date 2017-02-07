@@ -71,4 +71,4 @@ Open `localhost:9000` to view the app
 The straightforward approach to export a pdf is to save it to the server and provide the client with the url. But this approach is prone to unauthorized access of the report file. To circumvent this issue, a file-streaming based solution was implemented. Upon requesting the report, pdf data is streamed to the client which then parses the data as a blob and creates an objectURL. The objectURL is then used to have the file download in the browser.
 
 ## Feedback for improving the assignment
-It would be good have some sample data in CSV format for importing to the database as seed. It would help in understanding the system requirements in a better manner.
+It would be good to have some sample data in CSV format for importing to the database as seed. It would help in understanding the system requirements in a better manner.

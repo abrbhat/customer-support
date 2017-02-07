@@ -42,6 +42,7 @@
           <th>Subject</th>
           <th>Category</th>
           <th>Status</th>
+          <th>Closed At</th>
           <th></th>
         </tr>
       </thead>
@@ -53,6 +54,11 @@
           <td>{{supportRequest["subject"]}}</td>
           <td>{{supportRequest["category"]}}</td>
           <td>{{supportRequest["status"]}}</td>
+          <td>
+            <div ng-if = "supportRequest['status'] === 'closed'">
+              {{supportRequest["closed_at"] | date:'MMM d, yyyy hh:mm a Z'}}
+            </div>
+          </td>
           <td>
             <a role = "button"
                ng-click = "viewSupportRequest(supportRequest.id)" >

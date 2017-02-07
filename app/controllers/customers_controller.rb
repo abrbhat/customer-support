@@ -1,13 +1,14 @@
 class CustomersController < ApplicationController
   before_filter :authenticate_user!
 
-  before_action :check_if_admin, except: [:show]
-  before_action :check_and_set_customer, only: [:show, :update]
-  before_action :check_if_admin_or_self, only: [:show]
+  before_action :check_if_admin
+  before_action :set_customer, only: :show
 
-  # GET /customers
   def index
     @customers = Customer.all
+  end
+
+  def show
   end
 
   private
@@ -29,7 +30,7 @@ class CustomersController < ApplicationController
       end
     end
 
-    def check_and_set_customer
+    def set_customer
       @customer = Customer.find(params[:id])
     end
 
