@@ -9,16 +9,14 @@
  */
 
 angular.module('crossoverCustomerSupportApp')
-  .controller('ReportViewController', ['$scope', '$state', '$http',
+  .controller('ReportViewController', ['$scope', '$state', 'Report',
                                        'SupportRequest',
-                                        function ($scope, $state, $http,
+                                        function ($scope, $state, Report,
                                         SupportRequest){
   SupportRequest.remote.get({report: 'true'}).$promise
   .then(function(response){
     $scope.supportRequests = response['support_requests'];
   });
-
-
 
   $scope.downloadReport = function(){
     var fileName = "Report.pdf";
@@ -26,8 +24,7 @@ angular.module('crossoverCustomerSupportApp')
     document.body.appendChild(hiddenFileLink);
     hiddenFileLink.style = "display: none";
 
-    $http.get('/api/support_requests.pdf?report=true',
-              {responseType:'arraybuffer'})
+    Report.get()
     .then(function(result){
       var file = new Blob([result.data], {type: 'application/pdf'});
       var fileURL = window.URL.createObjectURL(file);
