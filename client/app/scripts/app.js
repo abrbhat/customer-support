@@ -84,6 +84,25 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     controller: 'AgentCreateController'
   })
 
+  // Admin States
+  .state('admin-list', {
+    url: '/admin/list',
+    templateUrl: 'components/admin/list/template.html',
+    controller: 'AdminListController'
+  })
+
+  .state('admin-view', {
+    url: '/admin/view/:id',
+    templateUrl: 'components/admin/view/template.html',
+    controller: 'AdminViewController'
+  })
+
+  .state('admin-create', {
+    url: '/admin/create/:id',
+    templateUrl: 'components/admin/create/template.html',
+    controller: 'AdminCreateController'
+  })
+
   // User States
   .state('user-login', {
     url: '/user/login',

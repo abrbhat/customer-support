@@ -54,6 +54,10 @@
                 <a ui-sref = "agent-list">Agents</a>
               </li>
               <li ui-sref-active = "active"
+                  ng-show = "(currentUser['type'] === 'Admin')" >
+                <a ui-sref = "admin-list">Admins</a>
+              </li>
+              <li ui-sref-active = "active"
                   ng-show = "!currentUser" >
                   <a ui-sref = "user-login">Sign in</a>
               </li>
@@ -112,6 +116,10 @@
         <script src="components/support-request/view/controller.js"></script>
         <script src="components/support-request/create/controller.js"></script>
 
+        <script src="components/admin/list/controller.js"></script>
+        <script src="components/admin/view/controller.js"></script>
+        <script src="components/admin/create/controller.js"></script>
+
         <script src="components/agent/list/controller.js"></script>
         <script src="components/agent/view/controller.js"></script>
         <script src="components/agent/create/controller.js"></script>
@@ -120,6 +128,7 @@
         <script src="components/customer/view/controller.js"></script>
 
         <!-- Models -->
+        <script src="models/admin.js"></script>
         <script src="models/agent.js"></script>
         <script src="models/customer.js"></script>
         <script src="models/support-request.js"></script>

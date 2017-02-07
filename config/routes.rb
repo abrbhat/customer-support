@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     mount_devise_token_auth_for 'User', at: 'auth'
     resources :support_requests, except: [:destroy]
     resources :users, only: [:show]
+    resources :admins
     resources :agents
     resources :customers, only: [:index, :show]
   end
