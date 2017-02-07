@@ -6,8 +6,11 @@
 
 <div class="well">
   <div class = "row">
-    <div class = "col-md-12">
+    <div class = "col-md-6">
       <strong>Subject: </strong> {{supportRequest['subject']}}
+    </div>
+    <div class = "col-md-6">
+      <strong>Category: </strong> {{supportRequest['category'] | humanize}}
     </div>
   </div>
   <div class = "row">

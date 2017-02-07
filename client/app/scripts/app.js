@@ -168,4 +168,14 @@ app.filter('capitalize', function() {
   return function(input) {
       return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
   };
+})
+
+.filter('humanize', function(){
+  return function(text) {
+    if(text) {
+      var string = text.split("_").join(" ").toLowerCase();
+      string = string.charAt(0).toUpperCase() + string.slice(1);
+      return string;
+    }
+  };
 });

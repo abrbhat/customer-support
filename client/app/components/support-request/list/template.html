@@ -37,12 +37,14 @@
       <tbody>
         <tr ng-repeat="supportRequest in supportRequests">
           <td>#{{supportRequest["id"]}}</td>
-          <td>{{supportRequest["created_at"] | date:'MMM d, yyyy hh:mm a Z'}}</td>
+          <td>
+            {{supportRequest["created_at"] | date:'MMM d, yyyy hh:mm a Z'}}
+          </td>
           <td ng-if = "(currentUser['type'] !== 'Customer')">
             {{supportRequest["customer"]}}
           </td>
           <td>{{supportRequest["subject"]}}</td>
-          <td>{{supportRequest["category"]}}</td>
+          <td>{{supportRequest["category"] | humanize}}</td>
           <td ng-if = "(currentUser['type'] === 'Admin')">
             {{supportRequest["agent"]}}
           </td>
