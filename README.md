@@ -1,24 +1,26 @@
-# README
+# Skype Customer Support App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The app consists of Ruby on Rails back-end and AngularJS front-end
 
-Things you may want to cover:
+## Back-end
+Installation links for various dependencies are provided:
+* [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+* [Rails](http://guides.railsgirls.com/install#setup-for-linux)
+* [MySQL](https://www.tutorialspoint.com/mysql/mysql-installation.htm)
 
-* Ruby version
+After installing Rails and MySQL, execute the following command in project_root/
+```
+bundle install
+```
 
-* System dependencies
+## Front-end
+Installation links for various dependencies are provided:
+* [nodejs](https://nodejs.org/en/download/package-manager/)
+* [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
+* [bower](https://bower.io/#install-bower)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+After installing npm and bower, execute the following commands in project_root/
+```
+npm install
+bower install
+```
