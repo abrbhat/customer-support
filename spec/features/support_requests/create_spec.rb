@@ -7,7 +7,7 @@ feature 'Support Request Create', js: true do
   end
 
   scenario 'user not logged in' do
-    SupportRequestCreatePage.visit(@support_request.id)
+    SupportRequestCreatePage.visit
 
     expect(page).not_to have_content('New Support Request')
   end
@@ -20,7 +20,7 @@ feature 'Support Request Create', js: true do
     end
 
     scenario 'create new support request form is present' do
-      find("bitton", text: "Create New").click
+      find("button", text: "Create New").click
 
       expect(page).to have_content('New Support Request')
     end
@@ -43,7 +43,7 @@ feature 'Support Request Create', js: true do
                 with: "I am having an error when installing Skype on Windows 10."
 
         find("button", text: "Create").click
-        
+
         expect(page).to have_content('Support Request')
 
         expect(page).to have_content('Installation and setup')
