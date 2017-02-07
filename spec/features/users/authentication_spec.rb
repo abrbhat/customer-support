@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Authentication', js: true do
   before do
-    @user = create(:confirmed_user)
+    @user = create(:user)
   end
 
   feature 'login' do

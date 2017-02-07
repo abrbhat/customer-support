@@ -22,9 +22,6 @@ class SupportRequestsController < ApplicationController
   def create
     @support_request = SupportRequest.new(support_request_params)
     @support_request.customer = current_user
-    @support_request.agent = Agent.all
-                                  .sort_by{|agent| agent.support_requests.count}
-                                  .first
 
     if @support_request.save
       render :show, status: :created
