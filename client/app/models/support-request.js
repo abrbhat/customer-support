@@ -7,7 +7,10 @@ angular.module('crossoverCustomerSupportApp')
     'update': { method: 'PUT' }
   });
 
+  var remotePDF = $resource('/api/support_requests.pdf');
+
   return {
-    remote: remote
+    remote: remote,
+    remotePDF: remotePDF
   };
 }]);

@@ -24,6 +24,21 @@ class SupportRequest < ApplicationRecord
   before_save :set_or_unset_closed_at
   after_save :assign_or_deassign_agent
 
+  def self.generate_report
+    @support_requests = SupportRequest.where(status: 'closed')
+                                      .where('closed_at >= ?', 1.month.ago)
+                                      .sort
+
+
+    html = "<!doctype html><html>" +
+            "<head><meta charset='utf-8'></head>" +
+           "<body>" +
+           "#{support_request_table}" +
+           "/body></html>"
+
+    @pdf = PDFKit.new(html).to_file("report.pdf")
+  end
+
   private
 
   def init

@@ -1,5 +1,5 @@
 class SupportRequestsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :download_report
 
   before_action :check_if_customer, only: :create
   before_action :check_and_set_support_request, only: [:show, :update]
@@ -14,6 +14,18 @@ class SupportRequestsController < ApplicationController
       @support_requests = SupportRequest.where(status: 'closed')
                                         .where('closed_at >= ?', 1.month.ago)
                                         .sort
+      respond_to do |format|
+        format.pdf {
+          send_file Report.generate,
+                    :filename => "report.pdf",
+                    :type => "application/pdf",
+                    :disposition  => "attachment"
+        }
+        format.json {
+          render "support_requests/index"
+        }
+      end
+
     else
       @support_requests = current_user.support_requests.sort.reverse
     end
@@ -43,6 +55,13 @@ class SupportRequestsController < ApplicationController
     else
       render json: @support_request.errors, status: :unprocessable_entity
     end
+  end
+
+  def download_report
+    send_file Report.generate,
+              :filename => "report.pdf",
+              :type => "application/pdf",
+              :disposition  => "inline"
   end
 
   private
