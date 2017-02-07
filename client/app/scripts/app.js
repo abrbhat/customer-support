@@ -103,6 +103,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     controller: 'AdminCreateController'
   })
 
+  // Report States
+  .state('report-view', {
+    url: '/report/view',
+    templateUrl: 'components/report/view/template.html',
+    controller: 'ReportViewController'
+  })
+
   // User States
   .state('user-login', {
     url: '/user/login',

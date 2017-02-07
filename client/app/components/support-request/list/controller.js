@@ -12,7 +12,7 @@ angular.module('crossoverCustomerSupportApp')
   .controller('SupportRequestListController', ['$scope', '$state',
                                                'SupportRequest',
                                                function ($scope, $state,
-                                               SupportRequest){  
+                                               SupportRequest){
   SupportRequest.remote.get().$promise
   .then(function(response){
     $scope.supportRequests = response['support_requests'];
@@ -20,6 +20,10 @@ angular.module('crossoverCustomerSupportApp')
 
   $scope.viewSupportRequest = function(supportRequestId){
     $state.go('supportRequest-view', {id: supportRequestId});
+  };
+
+  $scope.viewReport = function(){
+    $state.go('report-view');
   };
 
   $scope.createNewSupportRequest = function(){

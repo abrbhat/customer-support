@@ -1,18 +1,10 @@
-<h1>Support Requests</h1>
+<h1>Report</h1>
 
 <div class = "top-button-container">
   <button type="submit"
           class="btn btn-primary"
-          ng-click = "createNewSupportRequest()"
-          ng-show = "(currentUser.type === 'Customer')">
-    Create New
-  </button>
-
-  <button type="submit"
-          class="btn btn-primary"
-          ng-click = "viewReport()"
-          ng-show = "(currentUser.type !== 'Customer')">
-    View Report
+          ng-click = "downloadReport()" >
+    Download
   </button>
 </div>
 
@@ -38,7 +30,7 @@
             Assigned To
           </th>
           <th>Status</th>
-          <th></th>
+          <th ng-if = "(currentUser.type === 'Admin')"></th>
         </tr>
       </thead>
       <tbody>
@@ -56,7 +48,7 @@
             {{supportRequest["agent"]}}
           </td>
           <td>{{supportRequest["status"]}}</td>
-          <td>
+          <td ng-if = "(currentUser.type === 'Admin')">
             <a role = "button"
                ng-click = "viewSupportRequest(supportRequest.id)" >
               View

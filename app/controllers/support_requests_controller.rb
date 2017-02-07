@@ -6,8 +6,14 @@ class SupportRequestsController < ApplicationController
 
   # GET /support_requests
   def index
-    if current_user.is_admin?
+    if current_user.is_admin? and
+       params[:report].blank?
       @support_requests = SupportRequest.all.sort.reverse
+    elsif (params[:report].present?) and
+          (current_user.is_admin? or current_user.is_an_agent?)
+      @support_requests = SupportRequest.where(status: 'closed')
+                                        .where('closed_at >= ?', 1.month.ago)
+                                        .sort
     else
       @support_requests = current_user.support_requests.sort.reverse
     end
