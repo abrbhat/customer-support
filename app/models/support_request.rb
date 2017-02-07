@@ -21,6 +21,7 @@ class SupportRequest < ApplicationRecord
             }
 
   after_initialize :init
+  before_save :set_or_unset_closed_at
   after_save :assign_or_deassign_agent
 
   private
@@ -28,6 +29,16 @@ class SupportRequest < ApplicationRecord
   def init
     self.status ||= "open"
     self.severity ||= "low"
+  end
+
+  def set_or_unset_closed_at
+    if self.status_changed? and
+      if self.status == "closed"
+        self.closed_at = Time.now
+      else
+        self.closed_at = nil
+      end
+    end
   end
 
   def assign_or_deassign_agent

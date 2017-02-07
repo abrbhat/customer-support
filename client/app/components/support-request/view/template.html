@@ -23,7 +23,8 @@
   </div>
   <div class = "row">
     <div class = "col-md-6">
-      <strong>Created At: </strong> {{supportRequest['created_at'] | date:'MMM d, yyyy hh:mm a Z'}}
+      <strong>Created At: </strong>
+      {{supportRequest['created_at'] | date:'MMM d, yyyy hh:mm a Z'}}
     </div>
     <div class = "col-md-6">
       <strong>Severity: </strong> {{supportRequest['severity'] | capitalize}}
@@ -34,8 +35,14 @@
       <strong>Created By: </strong> {{supportRequest['customer']}}
     </div>
     <div class = "col-md-6"
-         ng-if = "(currentUser['type'] !== 'Customer')">
+         ng-if = "((currentUser['type'] !== 'Customer') &&
+                   (supportRequest['closed_at'] === null))" >
       <strong>Assigned To: </strong> {{supportRequest['agent']}}
+    </div>
+    <div class = "col-md-6"
+         ng-if = "(supportRequest['closed_at'] !== null)" >
+      <strong>Closed At: </strong>
+      {{supportRequest['closed_at'] | date:'MMM d, yyyy hh:mm a Z'}}
     </div>
   </div>
   <div class = "row">

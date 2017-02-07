@@ -44,6 +44,8 @@ feature 'Support Request View', js: true do
 
         find("button", text: "Close").click
 
+        expect(page).to have_content('Closed At')
+
         expect(page).to have_content('Closed')
       end
     end
@@ -60,6 +62,8 @@ feature 'Support Request View', js: true do
         expect(page).not_to have_content('Open')
 
         find("button", text: "Reopen").click
+
+        expect(page).not_to have_content('Closed At')
 
         expect(page).to have_content('Open')
       end
