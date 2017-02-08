@@ -1,3 +1,5 @@
+# This class represents a support request customer
+
 class Customer < User
   after_initialize :init
 

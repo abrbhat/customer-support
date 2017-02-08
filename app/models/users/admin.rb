@@ -1,3 +1,5 @@
+# This class represents a system admin
+
 class Admin < User
   after_initialize :init
 
@@ -9,6 +11,7 @@ class Admin < User
     self.type ||= "admin"
   end
 
+  # Prevents the last admin from being deleted
   def check_if_not_last
     if Admin.count === 1
       errors.add :admin, "Cannot delete last admin"

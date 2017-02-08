@@ -1,24 +1,39 @@
+# Handles requests to /api/support_requests
 class SupportRequestsController < ApplicationController
   before_filter :authenticate_user!, except: :download_report
 
+  # Limit access to creating a support request only to a customer
   before_action :check_if_customer, only: :create
+
   before_action :check_and_set_support_request, only: [:show, :update]
 
   # GET /support_requests
   def index
+    # Check whether is report is requested
     if params[:report].blank?
+      # Get support requests if report is not requested
+
       if current_user.is_admin?
+        # Get all support requests if the requesting user is an admin
         @support_requests = SupportRequest.all
       elsif current_user.is_an_agent?
+        # If the requesting user is an agent, get all the open support requests
+        # assigned to her
         @support_requests = current_user.open_support_requests
       elsif current_user.is_a_customer?
+        # If the requesting user is a customer, get the support requests created
+        # by the customer
         @support_requests = current_user.support_requests
       end
 
       @support_requests = @support_requests.sort.reverse
     else
+      # If a support request report is requested, check whether the requesting
+      # user is an admin or an agent
       if current_user.is_admin? or
          current_user.is_an_agent?
+        # If the requesting user is an admin or an agent, fetch all support requests
+        # closed in the last 1 month
         @support_requests = SupportRequest.where(status: 'closed')
                                           .where('closed_at >= ?', 1.month.ago)
                                           .sort
@@ -49,6 +64,8 @@ class SupportRequestsController < ApplicationController
   # POST /support_requests
   def create
     @support_request = SupportRequest.new(support_request_params)
+
+    # Set the current user as the creator of the support request
     @support_request.customer = current_user
 
     if @support_request.save
@@ -68,7 +85,6 @@ class SupportRequestsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def check_and_set_support_request
       @support_request = SupportRequest.find(params[:id])
 

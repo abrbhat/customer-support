@@ -1,3 +1,5 @@
+# This class represents a support agent
+
 class Agent < User
   after_initialize :init
 
@@ -5,6 +7,7 @@ class Agent < User
 
   before_destroy :assign_support_requests
 
+  # Fetches support requests assigned to the agent which are currently open
   def open_support_requests
     return self.support_requests.select{|support_request| support_request.is_open?}
   end
@@ -15,6 +18,7 @@ class Agent < User
     self.type ||= "agent"
   end
 
+  # Assigns the agent's support requests to other agents
   def assign_support_requests
     @support_requests = self.support_requests
 

@@ -1,3 +1,5 @@
+# This class represents a support request ticket
+
 class SupportRequest < ApplicationRecord
   belongs_to :customer
   belongs_to :agent
@@ -31,6 +33,7 @@ class SupportRequest < ApplicationRecord
   before_save :set_or_unset_closed_at
   after_save :assign_agent
 
+  # Checks if support request is currently open
   def is_open?
     return self.status == "open"
   end
@@ -42,6 +45,9 @@ class SupportRequest < ApplicationRecord
     self.severity ||= "low"
   end
 
+  # Checks if status of the support request has been changed
+  # * Sets closed_at if support request has been closed
+  # * Removes closed_at if support request has been reopened
   def set_or_unset_closed_at
     if self.status_changed? and
       if self.status == "closed"
@@ -52,11 +58,12 @@ class SupportRequest < ApplicationRecord
     end
   end
 
+  # Assigns agent to an open support request
   def assign_agent
     if self.status == "open" and
        self.agent.blank?
       self.agent = Agent.all
-                        .sort_by{|agent| agent.support_requests.count}
+                        .sort_by{|agent| agent.open_support_requests.count}
                         .first
       self.save
     end

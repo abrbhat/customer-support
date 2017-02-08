@@ -1,7 +1,10 @@
+# Handles requests to /api/agents
 class AgentsController < ApplicationController
   before_filter :authenticate_user!
 
+  # Limit access to admins
   before_action :check_if_admin
+
   before_action :set_agent, only: [:show, :update, :destroy]
 
   # GET /agents
@@ -25,6 +28,7 @@ class AgentsController < ApplicationController
     end
   end
 
+  # DELETE /agents/1
   def destroy
     if @agent.destroy
       render :show, status: :ok
@@ -34,7 +38,7 @@ class AgentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Check if current user is an admin
     def check_if_admin
       unless current_user.is_admin?
         render json: {"errors" => ["Inaccessible Resource"]},

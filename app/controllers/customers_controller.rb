@@ -1,7 +1,10 @@
+# Handles requests to /api/customers
 class CustomersController < ApplicationController
   before_filter :authenticate_user!
 
+  # Limit access to admins
   before_action :check_if_admin
+
   before_action :set_customer, only: :show
 
   def index

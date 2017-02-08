@@ -1,7 +1,10 @@
+# Handles requests to /api/users
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
-  before_action :check_and_set_user
+  before_action :set_user
+  
+  # Limit access to admin or the owner
   before_action :check_if_admin_or_self
 
   # GET /users/1
@@ -11,7 +14,7 @@ class UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def check_and_set_user
+    def set_user
       @user = User.find(params[:id])
     end
 
