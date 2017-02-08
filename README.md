@@ -25,12 +25,20 @@ After installing npm and bower, execute the following commands in project_root/
 cd client
 npm install
 bower install
+
+npm install -g grunt-cli karma-cli
 ```
 
 ## Initialization
 Run the following the command to initialize the database
 ```
 rails db:setup
+```
+
+## Build
+Run the following the command to build the app front-end in the project_root/public
+```
+grunt build --gruntfile client/Gruntfile.js
 ```
 
 ## Assumptions

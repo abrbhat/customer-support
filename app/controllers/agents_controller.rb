@@ -25,15 +25,6 @@ class AgentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /agents/1
-  def update
-    if @agent.update(agent_params)
-      render :show, status: :ok
-    else
-      render json: @agent.errors, status: :unprocessable_entity
-    end
-  end
-
   def destroy
     if @agent.destroy
       render :show, status: :ok

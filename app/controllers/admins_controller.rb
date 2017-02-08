@@ -25,15 +25,6 @@ class AdminsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /admins/1
-  def update
-    if @admin.update(admin_params)
-      render :show, status: :ok
-    else
-      render json: @admin.errors, status: :unprocessable_entity
-    end
-  end
-
   def destroy
     if @admin.destroy
       render :show, status: :ok
