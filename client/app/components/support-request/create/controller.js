@@ -10,11 +10,9 @@
 
 angular.module('crossoverCustomerSupportApp')
   .controller('SupportRequestCreateController', ['$scope', '$state',
-                                                 'SupportRequest', 'User',
+                                                 'SupportRequest',
                                                 function ($scope, $state,
-                                                SupportRequest, User){
-  $scope.currentUser = User.current;
-
+                                                SupportRequest){
   $scope.submitSupportRequest = function(form){
     var postData = {
       'support_request': form

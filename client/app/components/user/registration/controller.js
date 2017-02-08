@@ -10,7 +10,7 @@
 angular.module('crossoverCustomerSupportApp')
   .controller('UserRegistrationController', ['$scope', '$auth',
                                         function ($scope, $auth) {
-    $scope.handleRegBtnClick = function() {
+    $scope.handleRegistrationButtonClick = function() {
       $auth.submitRegistration($scope.registrationForm)
       .then(function() {
         $auth.submitLogin({

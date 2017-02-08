@@ -8,10 +8,7 @@
  * Controller of the crossoverCustomerSupportApp
  */
 angular.module('crossoverCustomerSupportApp')
-  .controller('UserLoginController', ['$scope','$state', 'User',
-                                     function ($scope, $state, User) {
-    if(User.current){ $state.go('supportRequest-list'); }
-
+  .controller('UserLoginController', ['$scope', function ($scope) {
     $scope.$on('auth:login-error', function(event, reason) {
       $scope.error = reason.errors[0];
     });

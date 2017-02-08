@@ -10,11 +10,8 @@
 
 angular.module('crossoverCustomerSupportApp')
   .controller('AgentListController', ['$scope', '$state',
-                                      'Agent', 'User',
-                                    function ($scope, $state, Agent,
-                                              User){
-  $scope.currentUser = User.current;
-
+                                      'Agent',
+                                    function ($scope, $state, Agent){
   Agent.remote.get().$promise
   .then(function(response){
     $scope.agents = response['agents'];

@@ -145,17 +145,15 @@ app.run(['$rootScope', '$state', '$auth', '$timeout', 'User',
   $rootScope.$on('auth:login-success', function(event, user) {
     User.remote.get({id: user.id}).$promise
     .then(function(user){
-      User.current = user;
       $rootScope.currentUser = user;
       $state.go('supportRequest-list');
     });
   });
 
   $rootScope.$on('auth:validation-success', function(event, user) {
-    if(!User.current){
+    if(!$rootScope.currentUser){
       User.remote.get({id: user.id}).$promise
       .then(function(user){
-        User.current = user;
         $rootScope.currentUser = user;
       });
     }
@@ -166,14 +164,13 @@ app.run(['$rootScope', '$state', '$auth', '$timeout', 'User',
   });
 
   $rootScope.$on('auth:logout-success', function() {
-    User.current = null;
     $rootScope.currentUser = null;
     $state.go('user-login');
   });
 
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams,
                                                fromState, fromParams) {
-    if(User.current){
+    if($rootScope.currentUser){
       if((toState.name === 'user-login') ||
          (toState.name === 'user-register')){
         event.preventDefault();

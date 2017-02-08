@@ -10,13 +10,11 @@
 
 angular.module('crossoverCustomerSupportApp')
   .controller('SupportRequestViewController', ['$scope', '$stateParams', '$state',
-                                               'SupportRequest', 'User',
+                                               'SupportRequest',
                                       function ($scope, $stateParams, $state,
-                                                SupportRequest, User){
+                                                SupportRequest){
 
   var urlParams = {id: $stateParams.id};
-
-  $scope.currentUser = User.current;
 
   SupportRequest.remote.get(urlParams).$promise
   .then(function(supportRequest){

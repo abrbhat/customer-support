@@ -10,11 +10,8 @@
 
 angular.module('crossoverCustomerSupportApp')
   .controller('CustomerListController', ['$scope', '$state',
-                                         'Customer', 'User',
-                                    function ($scope, $state, Customer,
-                                              User){
-  $scope.currentUser = User.current;
-
+                                         'Customer',
+                                    function ($scope, $state, Customer){
   Customer.remote.get().$promise
   .then(function(response){
     $scope.customers = response['customers'];
