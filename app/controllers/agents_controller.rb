@@ -6,7 +6,7 @@ class AgentsController < ApplicationController
 
   # GET /agents
   def index
-    @agents = Agent.all
+    @agents = Agent.all.sort
   end
 
   # GET /agents/1

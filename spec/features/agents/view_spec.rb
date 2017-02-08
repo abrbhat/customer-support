@@ -56,7 +56,7 @@ feature 'Agent View', js: true do
 
         expect(page).to have_content('Agents')
 
-        expect(page).not_to have_content(@agent2.email)
+        expect(page).not_to have_content(@agent1.email)
       end
     end
   end

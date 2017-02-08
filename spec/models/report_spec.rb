@@ -1,14 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe SupportRequest, type: :model do
+RSpec.describe Report, type: :model do
   before do
-    @support_request = SupportRequest.new(subject: "Unable to understand")
+    @support_requests = create_list(
+      :support_request,
+      5,
+      status: 'closed'
+    )
   end
 
-  describe "when subject is not present" do
-    it "should not be valid" do
-      @support_request.subject = " "
-      expect(@support_request).not_to be_valid
+  describe "generate" do
+    it "should generate report" do
+      @pdf = Report.generate
+
+      expect(@pdf).to be_present
     end
   end
 end
