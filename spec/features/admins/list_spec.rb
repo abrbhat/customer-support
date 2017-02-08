@@ -11,6 +11,18 @@ feature 'Admin List', js: true do
     expect(page).not_to have_content('Admins')
   end
 
+  scenario 'non-admin user logged in' do
+    @customer = create(:customer)
+
+    LoginPage.complete_login(@customer.email, @customer.password)
+
+    expect(page).to have_content('Support Requests')
+
+    AdminListPage.visit
+
+    expect(page).not_to have_content('Admins')
+  end
+
   feature 'admin logged in' do
     before(:each) do
       LoginPage.complete_login(@admin.email, @admin.password)

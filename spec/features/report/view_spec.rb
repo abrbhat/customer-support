@@ -19,6 +19,16 @@ feature 'Report View', js: true do
     expect(page).not_to have_content('Report')
   end
 
+  scenario 'customer logged in' do
+    LoginPage.complete_login(@customer.email, @customer.password)
+
+    expect(page).to have_content('Support Requests')
+
+    ReportViewPage.visit
+
+    expect(page).not_to have_content('Report')
+  end  
+
   feature 'agent logged in' do
     before do
       LoginPage.complete_login(@agent.email, @agent.password)

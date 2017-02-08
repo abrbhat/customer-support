@@ -13,6 +13,18 @@ feature 'Agent View', js: true do
     expect(page).not_to have_content('Agent')
   end
 
+  scenario 'non-admin user logged in' do
+    @customer = create(:customer)
+
+    LoginPage.complete_login(@customer.email, @customer.password)
+
+    expect(page).to have_content('Support Requests')
+
+    AgentViewPage.visit(@agent1.id)
+
+    expect(page).not_to have_content('Agent')
+  end
+
   feature 'admin logged in' do
     before do
       LoginPage.complete_login(@admin.email, @admin.password)

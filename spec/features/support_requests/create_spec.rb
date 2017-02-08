@@ -12,6 +12,16 @@ feature 'Support Request Create', js: true do
     expect(page).not_to have_content('New Support Request')
   end
 
+  scenario 'agent logged in' do
+    LoginPage.complete_login(@agent.email, @agent.password)
+
+    expect(page).to have_content('Support Requests')
+
+    SupportRequestCreatePage.visit
+
+    expect(page).not_to have_content('New Support Request')
+  end
+
   feature 'user logged in' do
     before do
       LoginPage.complete_login(@customer.email, @customer.password)

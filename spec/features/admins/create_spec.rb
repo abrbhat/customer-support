@@ -11,6 +11,18 @@ feature 'Admin Create', js: true do
     expect(page).not_to have_content('New Admin')
   end
 
+  scenario 'non-admin user logged in' do
+    @customer = create(:customer)
+
+    LoginPage.complete_login(@customer.email, @customer.password)
+
+    expect(page).to have_content('Support Requests')
+
+    AdminCreatePage.visit
+
+    expect(page).not_to have_content('New Admin')
+  end
+
   feature 'admin logged in' do
     before do
       LoginPage.complete_login(@admin.email, @admin.password)

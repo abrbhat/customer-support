@@ -6,31 +6,38 @@ class SupportRequestsController < ApplicationController
 
   # GET /support_requests
   def index
-    if current_user.is_admin? and
-       params[:report].blank?
-      @support_requests = SupportRequest.all.sort.reverse
-    elsif (params[:report].present?) and
-          (current_user.is_admin? or current_user.is_an_agent?)
-      @support_requests = SupportRequest.where(status: 'closed')
-                                        .where('closed_at >= ?', 1.month.ago)
-                                        .sort
-      respond_to do |format|
-        format.pdf {
-          send_file Report.generate,
-                    :filename => "report.pdf",
-                    :type => "application/pdf",
-                    :disposition  => "attachment"
-        }
-        format.json {
-          render "support_requests/index"
-        }
+    if params[:report].blank?
+      if current_user.is_admin?
+        @support_requests = SupportRequest.all
+      elsif current_user.is_an_agent?
+        @support_requests = current_user.open_support_requests
+      elsif current_user.is_a_customer?
+        @support_requests = current_user.support_requests
       end
 
-    elsif current_user.is_an_agent?
-      @support_requests = current_user.open_support_requests
-                                      .sort.reverse
-    elsif current_user.is_a_customer?
-      @support_requests = current_user.support_requests.sort.reverse
+      @support_requests = @support_requests.sort.reverse
+    else
+      if current_user.is_admin? or
+         current_user.is_an_agent?
+        @support_requests = SupportRequest.where(status: 'closed')
+                                          .where('closed_at >= ?', 1.month.ago)
+                                          .sort
+        respond_to do |format|
+          format.pdf {
+            send_file Report.generate,
+                      :filename => "report.pdf",
+                      :type => "application/pdf",
+                      :disposition  => "attachment"
+          }
+          format.json {
+            render "support_requests/index"
+          }
+        end
+      else
+        render json: {"errors" => ["Inaccessible Resource"]},
+               status: :unauthorized
+        return
+      end
     end
   end
 

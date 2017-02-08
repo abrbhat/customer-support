@@ -33,15 +33,4 @@ class CustomersController < ApplicationController
     def set_customer
       @customer = Customer.find(params[:id])
     end
-
-    # Only allow a trusted parameter "white list" through.
-    def customer_params
-      params.require(:customer).permit(
-        :subject,
-        :description,
-        :status,
-        :severity,
-        :category
-      )
-    end
 end

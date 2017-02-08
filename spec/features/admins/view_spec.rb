@@ -12,6 +12,18 @@ feature 'Admin View', js: true do
     expect(page).not_to have_content('Admin')
   end
 
+  scenario 'non-admin user logged in' do
+    @customer = create(:customer)
+
+    LoginPage.complete_login(@customer.email, @customer.password)
+
+    expect(page).to have_content('Support Requests')
+
+    AdminViewPage.visit(@admin1.id)
+
+    expect(page).not_to have_content('Admin')
+  end
+
   feature 'admin logged in' do
     before do
       LoginPage.complete_login(@admin1.email, @admin1.password)

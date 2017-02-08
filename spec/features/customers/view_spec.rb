@@ -12,6 +12,16 @@ feature 'Customer View', js: true do
     expect(page).not_to have_content('Customers')
   end
 
+  scenario 'non-admin user logged in' do
+    LoginPage.complete_login(@customer.email, @customer.password)
+
+    expect(page).to have_content('Support Requests')
+
+    CustomerViewPage.visit(@customer.id)
+
+    expect(page).not_to have_content('Customers')
+  end
+
   feature 'admin logged in' do
     before do
       LoginPage.complete_login(@admin.email, @admin.password)

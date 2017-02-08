@@ -16,6 +16,18 @@ feature 'Support Request View', js: true do
     expect(page).not_to have_content('Support Request')
   end
 
+  scenario 'customer viewing another customer\'s support requests' do
+    @another_customer = create(:customer)
+
+    LoginPage.complete_login(@another_customer.email, @another_customer.password)
+
+    expect(page).to have_content('Support Requests')
+
+    SupportRequestViewPage.visit(@support_request.id)
+
+    expect(page).not_to have_content('Description')
+  end
+
   feature 'user logged in' do
     before do
       LoginPage.complete_login(@customer.email, @customer.password)
