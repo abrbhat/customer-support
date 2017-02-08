@@ -27,7 +27,7 @@ RSpec.describe Agent, type: :model do
         :support_request,
         agent: @agent
       )
-      
+
       @agent.destroy
 
       expect(Agent.count).to eq 1
