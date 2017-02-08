@@ -20,6 +20,9 @@ angular.module('crossoverCustomerSupportApp')
       });
     };
 
+    /**
+     * Sets $scope.error on receiving registration error broadcast
+     */
     $scope.$on('auth:registration-email-error', function(ev, reason) {
       $scope.error = reason.errors["full_messages"][0];
     });

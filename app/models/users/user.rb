@@ -7,8 +7,13 @@ class User < ActiveRecord::Base
           :recoverable, :rememberable, :trackable, :validatable,:omniauthable,
           :confirmable
 
+  validates :email,
+            :presence => true,
+            :uniqueness => true
+
   include DeviseTokenAuth::Concerns::User
 
+  before_validation :downcase_email
   before_save :set_default_type
 
   before_save -> { skip_confirmation! }
@@ -32,5 +37,9 @@ class User < ActiveRecord::Base
 
   def set_default_type
     self.type ||= "Customer"
+  end
+
+  def downcase_email
+    self.email = email.downcase if email.present?
   end
 end

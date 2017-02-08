@@ -14,19 +14,32 @@ angular.module('crossoverCustomerSupportApp')
 
   var urlParams = {id: $stateParams.id};
 
+  /**
+   * Gets agent details from server and assign it to $scope.agent
+   */
   Agent.remote.get(urlParams).$promise
   .then(function(agent){
     $scope.agent = agent;
   });
 
+  /**
+   * [viewSupportRequest Makes state go support request detail view]
+   * @param  {Integer} supportRequestId Support request id
+   */
   $scope.viewSupportRequest = function(supportRequestId){
     $state.go('supportRequest-view', {id: supportRequestId});
   };
 
+  /**
+   * [removeAgent Removes agent after confirmation]
+   */
   $scope.removeAgent = function(){
     if(window.confirm("Are you sure?")){
       Agent.remote.remove({id: $scope.agent['id']}).$promise
       .then(function(){
+        /*
+          Make state go to agent list after successful removal of agent
+         */
         $state.go('agent-list');
       })
       .catch(function(error){

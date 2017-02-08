@@ -15,15 +15,17 @@ angular.module('crossoverCustomerSupportApp')
                                                 SupportRequest){
 
   var urlParams = {id: $stateParams.id};
-
+/**
+ * Gets support request details from server
+ */
   SupportRequest.remote.get(urlParams).$promise
   .then(function(supportRequest){
     $scope.supportRequest = supportRequest;
-  })
-  .catch(function(){
-    $state.go('supportRequest-list');
   });
 
+  /**
+   * [closeSupportRequest Closes the current support request]
+   */
   $scope.closeSupportRequest = function(){
     var urlParams = {
       id: $scope.supportRequest['id']
@@ -38,9 +40,15 @@ angular.module('crossoverCustomerSupportApp')
     SupportRequest.remote.update(urlParams, postParams).$promise
     .then(function(updatedSupportRequest){
       $scope.supportRequest = updatedSupportRequest;
+    })
+    .catch(function(error){
+      window.alert('Error ' + error);
     });
   };
 
+  /**
+   * [reopenSupportRequest Reopens the support request]
+   */
   $scope.reopenSupportRequest = function(){
     var urlParams = {
       id: $scope.supportRequest['id']
@@ -55,6 +63,9 @@ angular.module('crossoverCustomerSupportApp')
     SupportRequest.remote.update(urlParams, postParams).$promise
     .then(function(updatedSupportRequest){
       $scope.supportRequest = updatedSupportRequest;
+    })
+    .catch(function(error){
+      window.alert('Error ' + error);
     });
   };
 }]);
