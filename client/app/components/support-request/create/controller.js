@@ -9,9 +9,9 @@
  */
 
 angular.module('crossoverCustomerSupportApp')
-  .controller('SupportRequestCreateController', ['$scope', '$state',
+  .controller('SupportRequestCreateController', ['$scope', '$state', '$filter',
                                                  'SupportRequest',
-                                                  function ($scope, $state,
+                                                  function ($scope, $state, $filter,
                                                   SupportRequest){
   /**
    * [submitSupportRequest Submit support request form to server]
@@ -28,7 +28,11 @@ angular.module('crossoverCustomerSupportApp')
       $state.go('supportRequest-view', {id: createdSupportRequest['id']});
     })
     .catch(function(error){
-      window.alert('Error ' + error);
+      var errorData = error.data;
+      var errorField = Object.keys(errorData)[0];
+      var errorText = errorData[errorField][0];
+
+      $scope.error = $filter('capitalize')(errorField) + " " + errorText;
     });
   };
 }]);

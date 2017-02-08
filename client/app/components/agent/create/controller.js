@@ -9,8 +9,8 @@
  */
 
 angular.module('crossoverCustomerSupportApp')
-  .controller('AgentCreateController', ['$scope', '$state', 'Agent',
-                                        function ($scope, $state, Agent){
+  .controller('AgentCreateController', ['$scope', '$state', '$filter', 'Agent',
+                                        function ($scope, $state, $filter, Agent){
   /**
    * [submitAgentForm Submits form to server]
    * @param  {Object} form Form with agent data
@@ -26,7 +26,11 @@ angular.module('crossoverCustomerSupportApp')
       $state.go('agent-view', {id: createdAgent['id']});
     })
     .catch(function(error){
-      
+      var errorData = error.data;
+      var errorField = Object.keys(errorData)[0];
+      var errorText = errorData[errorField][0];
+
+      $scope.error = $filter('capitalize')(errorField) + " " + errorText;
     });
   };
 }]);
