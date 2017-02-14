@@ -36,6 +36,20 @@ Run the following the command to initialize the database
 rails db:setup
 ```
 
+## Test
+Most of the test-coverage of the app is through end-to-end tests implemented
+with Capybara. Some back-end unit-tests are also implemented with RSpec. To run
+them, execute the following command in project_root/
+```
+rspec spec/
+```
+A few front-end tests are also implemented with Karma. The Karma tests are present only
+as a proof-of-concept since the front-end functionality has been amply covered
+through the end-to-end tests. To run them, run the following command in project_root/client/
+```
+karma start test/karma.co.js
+```
+
 ## Build
 Run the following the command to build the app front-end in the project_root/public
 ```
