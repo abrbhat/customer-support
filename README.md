@@ -1,4 +1,4 @@
-# Skype Customer Support App
+# Customer Support App
 
 ## Installation
 The app consists of Ruby on Rails back-end and AngularJS front-end

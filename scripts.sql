@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.54, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: crossover_development
+-- Host: localhost    Database: customer_support_development
 -- ------------------------------------------------------
 -- Server version	5.5.54-0ubuntu0.14.04.1
 

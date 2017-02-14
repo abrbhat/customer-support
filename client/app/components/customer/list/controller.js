@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name crossoverCustomerSupportApp.controller:CustomerListController
+ * @name customerSupportApp.controller:CustomerListController
  * @description
  * # CustomerListController
- * Controller of the crossoverCustomerSupportApp
+ * Controller of the customerSupportApp
  */
 
-angular.module('crossoverCustomerSupportApp')
+angular.module('customerSupportApp')
   .controller('CustomerListController', ['$scope', '$state',
                                          'Customer',
                                     function ($scope, $state, Customer){

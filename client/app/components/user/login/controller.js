@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name crossoverCustomerSupportApp.controller:UserLoginController
+ * @name customerSupportApp.controller:UserLoginController
  * @description
  * # UserLoginController
- * Controller of the crossoverCustomerSupportApp
+ * Controller of the customerSupportApp
  */
-angular.module('crossoverCustomerSupportApp')
+angular.module('customerSupportApp')
   .controller('UserLoginController', ['$scope', function ($scope) {
     /**
      * Sets $scope.error on receiving login error broadcast

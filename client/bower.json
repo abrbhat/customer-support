@@ -1,5 +1,5 @@
 {
-  "name": "crossover-customer-support",
+  "name": "customer-support",
   "version": "0.0.1",
   "dependencies": {
     "angular": "1.5.9",
@@ -16,7 +16,7 @@
     "angular-mocks": "1.5.9"
   },
   "appPath": "app",
-  "moduleName": "crossoverCustomerSupportApp",
+  "moduleName": "customerSupportApp",
   "overrides": {
     "bootstrap": {
       "main": [

@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name crossoverCustomerSupportApp.controller:AgentViewController
+ * @name customerSupportApp.controller:AgentViewController
  * @description
  * # AgentViewController
- * Controller of the crossoverCustomerSupportApp
+ * Controller of the customerSupportApp
  */
 
-angular.module('crossoverCustomerSupportApp')
+angular.module('customerSupportApp')
   .controller('AgentViewController', ['$scope', '$stateParams','$state', 'Agent',
                                       function ($scope, $stateParams, $state, Agent){
 

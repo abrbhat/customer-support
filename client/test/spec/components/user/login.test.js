@@ -3,7 +3,7 @@
 describe('Controller: UserLoginController', function () {
 
   // load the controller's module
-  beforeEach(module('crossoverCustomerSupportApp'));
+  beforeEach(module('customerSupportApp'));
 
   var UserLoginController,
       scope;

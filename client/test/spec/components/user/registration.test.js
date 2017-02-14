@@ -3,7 +3,7 @@
 describe('Controller: UserRegistrationController', function () {
 
   // load the controller's module
-  beforeEach(module('crossoverCustomerSupportApp'));
+  beforeEach(module('customerSupportApp'));
 
   var UserRegistrationController,
       $q,

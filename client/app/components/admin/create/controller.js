@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name crossoverCustomerSupportApp.controller:AdminCreateController
+ * @name customerSupportApp.controller:AdminCreateController
  * @description
  * # AdminCreateController
- * Controller of the crossoverCustomerSupportApp
+ * Controller of the customerSupportApp
  */
 
-angular.module('crossoverCustomerSupportApp')
+angular.module('customerSupportApp')
   .controller('AdminCreateController', ['$scope', '$state', '$filter', 'Admin',
                                         function ($scope, $state, $filter, Admin){
   /**

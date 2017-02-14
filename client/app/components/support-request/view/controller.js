@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name crossoverCustomerSupportApp.controller:SupportRequestViewController
+ * @name customerSupportApp.controller:SupportRequestViewController
  * @description
  * # SupportRequestViewController
- * Controller of the crossoverCustomerSupportApp
+ * Controller of the customerSupportApp
  */
 
-angular.module('crossoverCustomerSupportApp')
+angular.module('customerSupportApp')
   .controller('SupportRequestViewController', ['$scope', '$stateParams', '$state',
                                                'SupportRequest',
                                       function ($scope, $stateParams, $state,

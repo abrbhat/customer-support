@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name crossoverCustomerSupportApp.controller:UserRegistrationController
+ * @name customerSupportApp.controller:UserRegistrationController
  * @description
  * # UserRegistrationController
- * Controller of the crossoverCustomerSupportApp
+ * Controller of the customerSupportApp
  */
-angular.module('crossoverCustomerSupportApp')
+angular.module('customerSupportApp')
   .controller('UserRegistrationController', ['$scope', '$auth',
                                         function ($scope, $auth) {
     $scope.handleRegistrationButtonClick = function() {

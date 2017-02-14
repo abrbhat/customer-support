@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/var/www/crossover-customer-support/app/models/users/admin.rb": [
+      "/var/www/customer-support/app/models/users/admin.rb": [
         null,
         null,
         1,
@@ -24,7 +24,7 @@
         null,
         null
       ],
-      "/var/www/crossover-customer-support/app/models/users/agent.rb": [
+      "/var/www/customer-support/app/models/users/agent.rb": [
         null,
         null,
         1,
@@ -73,7 +73,7 @@
         null,
         null
       ],
-      "/var/www/crossover-customer-support/app/models/report.rb": [
+      "/var/www/customer-support/app/models/report.rb": [
         null,
         null,
         1,
@@ -98,12 +98,12 @@
         1,
         null
       ],
-      "/var/www/crossover-customer-support/app/models/application_record.rb": [
+      "/var/www/customer-support/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/var/www/crossover-customer-support/app/models/support_request.rb": [
+      "/var/www/customer-support/app/models/support_request.rb": [
         null,
         null,
         1,
@@ -176,7 +176,7 @@
         null,
         null
       ],
-      "/var/www/crossover-customer-support/app/models/users/customer.rb": [
+      "/var/www/customer-support/app/models/users/customer.rb": [
         null,
         null,
         1,
@@ -191,7 +191,7 @@
         null,
         null
       ],
-      "/var/www/crossover-customer-support/app/controllers/application_controller.rb": [
+      "/var/www/customer-support/app/controllers/application_controller.rb": [
         1,
         1,
         1,
@@ -200,7 +200,7 @@
         1,
         null
       ],
-      "/var/www/crossover-customer-support/app/controllers/users_controller.rb": [
+      "/var/www/customer-support/app/controllers/users_controller.rb": [
         null,
         1,
         1,
@@ -231,7 +231,7 @@
         null,
         null
       ],
-      "/var/www/crossover-customer-support/app/controllers/support_requests_controller.rb": [
+      "/var/www/customer-support/app/controllers/support_requests_controller.rb": [
         null,
         1,
         1,
@@ -350,7 +350,7 @@
         null,
         null
       ],
-      "/var/www/crossover-customer-support/app/controllers/admins_controller.rb": [
+      "/var/www/customer-support/app/controllers/admins_controller.rb": [
         null,
         1,
         1,
@@ -413,7 +413,7 @@
         null,
         null
       ],
-      "/var/www/crossover-customer-support/app/controllers/agents_controller.rb": [
+      "/var/www/customer-support/app/controllers/agents_controller.rb": [
         null,
         1,
         1,
@@ -476,7 +476,7 @@
         null,
         null
       ],
-      "/var/www/crossover-customer-support/app/controllers/customers_controller.rb": [
+      "/var/www/customer-support/app/controllers/customers_controller.rb": [
         null,
         1,
         1,
@@ -517,7 +517,7 @@
         null,
         null
       ],
-      "/var/www/crossover-customer-support/app/models/users/user.rb": [
+      "/var/www/customer-support/app/models/users/user.rb": [
         0,
         0,
         0,

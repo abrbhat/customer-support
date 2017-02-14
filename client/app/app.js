@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name crossoverCustomerSupportApp
+ * @name customerSupportApp
  * @description
- * # crossoverCustomerSupportApp
+ * # customerSupportApp
  *
  * Main module of the application.
  */
 
-var app = angular.module('crossoverCustomerSupportApp', [
+var app = angular.module('customerSupportApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
