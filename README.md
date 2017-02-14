@@ -1,6 +1,27 @@
 # Customer Support App
 A sample app for Rails + Angular stack
 
+## Features
+
+* A web portal for customers to login, create support requests and view status of their previous support requests
+* A web portal for support agents to view and close the support requests assigned to them
+* PDF-exportable report of requests closed in last one month
+* Ability for admins to manage other users and support requests
+
+## Assumptions
+The application is designed as a standard customer support application.
+Some common-sense assumptions have been taken. Below is the list of a few of those assumptions:
+* The customers can register and login
+* The customers can create support requests and view status of their previous requests
+* The customers can close their own previous support requests
+* The customers can re-open their previous closed support requests
+* The agents can login but cannot register themselves
+* The agents can close but not re-open support requests
+* The admins can create other agents and admins but not other customers
+* The admins can close support requests but not delete any support requests
+* The admins can remove any agents and admins but not customers
+* The last agent and admin cannot be removed
+
 ## Installation
 The app consists of Ruby on Rails back-end and AngularJS front-end
 
@@ -55,28 +76,6 @@ Run the following the command to build the app front-end in the project_root/pub
 ```
 grunt build --gruntfile client/Gruntfile.js
 ```
-
-## Assumptions
-The application is designed as a standard customer support application.
-Some common-sense assumptions have been taken to fill the gap in the spec.
-Below is the list of a few of those assumptions:
-* The customers can register and login
-* The customers can create support requests and view status of their previous requests
-* The customers can close their own previous support requests
-* The customers can re-open their previous closed support requests
-* The agents can login but cannot register themselves
-* The agents can close but not re-open support requests
-* The admins can create other agents and admins but not other customers
-* The admins can close support requests but not delete any support requests
-* The admins can remove any agents and admins but not customers
-* The last agent and admin cannot be removed
-
-## Features
-
-* A web portal for customers to login, create support requests and view status of their previous support requests
-* A web portal for support agents to view and close the support requests assigned to them
-* PDF-exportable report of requests closed in last one month
-* Ability for admins to manage other users and support requests
 
 ## Running the app
 
