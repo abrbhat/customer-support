@@ -25,3 +25,6 @@
 
 # Ignore generated report
 report.pdf
+
+# Ignore application configuration
+/config/application.yml

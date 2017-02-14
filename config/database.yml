@@ -1,12 +1,12 @@
 default: &default
   adapter: mysql2
+  username: <%= ENV['LOCAL_DB_USERNAME'] %>
+  password: <%= ENV['LOCAL_DB_PASSWORD'] %>
+  host: localhost
 
 development:
   <<: *default
   database: customer_support_development
-  username: root
-  password: password
-  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -14,10 +14,13 @@ development:
 test:
   <<: *default
   database: customer_support_test
-  username: root
-  password: password
-  host: localhost
 
 production:
   <<: *default
-  database: customer_support_production
+  adapter: mysql2
+  encoding: unicode
+  database: <%= ENV['PRODUCTION_DB_NAME'] %>
+  username: <%= ENV['PRODUCTION_USERNAME'] %>
+  password: <%= ENV['PRODUCTION_PASSWORD'] %>
+  host: <%= ENV['PRODUCTION_HOSTNAME'] %>
+  port: <%= ENV['PRODUCTION_PORT'] %>
