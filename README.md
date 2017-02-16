@@ -22,6 +22,18 @@ Some common-sense assumptions have been taken. Below is the list of a few of tho
 * The admins can remove any agents and admins but not customers
 * The last agent and admin cannot be removed
 
+## Architecture
+
+### Back-end
+The Back-end of the application is a Ruby on Rails API. The API is based on the REST architecture and responds with JSON. The API follows the standard MVC design pattern.
+
+### Front-end
+The source code for the front-end AngularJS SPA resides in project_root/client. Building it with grunt results in the built being stored in project_root/public. This enables the Ruby on Rails server to serve the web pages directly without involving the asset pipeline. The front-end communicates with back-end through the REST API provided by the back-end.
+
+The Angular App is divided into components and models.
+* A component consists of a controller and a template. It handles logic related to an individual state.
+* A model is a factory containing business logic related to a particular entity.
+
 ## Installation
 The app consists of Ruby on Rails back-end and AngularJS front-end
 
