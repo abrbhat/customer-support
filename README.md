@@ -1,26 +1,5 @@
 # Customer Support App
-A sample app for Rails + Angular stack
-
-## Features
-
-* A web portal for customers to login, create support requests and view status of their previous support requests
-* A web portal for support agents to view and close the support requests assigned to them
-* PDF-exportable report of requests closed in last one month
-* Ability for admins to manage other users and support requests
-
-## Assumptions
-The application is designed as a standard customer support application.
-Some common-sense assumptions have been taken. Below is the list of a few of those assumptions:
-* The customers can register and login
-* The customers can create support requests and view status of their previous requests
-* The customers can close their own previous support requests
-* The customers can re-open their previous closed support requests
-* The agents can login but cannot register themselves
-* The agents can close but not re-open support requests
-* The admins can create other agents and admins but not other customers
-* The admins can close support requests but not delete any support requests
-* The admins can remove any agents and admins but not customers
-* The last agent and admin cannot be removed
+A sample app for Ruby on Rails and AngularJS stack
 
 ## Architecture
 
@@ -32,7 +11,7 @@ The source code for the front-end AngularJS SPA resides in project_root/client. 
 
 The Angular App is divided into components and models.
 * A component consists of a controller and a template. It handles logic related to an individual state.
-* A model is a factory containing business logic related to a particular entity.
+* A model is a factory containing business logic related to a particular entity such as a user, a support request etc.
 
 ## Installation
 The app consists of Ruby on Rails back-end and AngularJS front-end
@@ -98,6 +77,13 @@ grunt serve
 ```
 Open `localhost:9000` to view the app
 
+## Features
+
+* A web portal for customers to login, create support requests and view status of their previous support requests
+* A web portal for support agents to view and close the support requests assigned to them
+* PDF-exportable report of requests closed in last one month
+* Ability for admins to manage other users and support requests
+
 ## Demo
 
 https://customer-support-84625.herokuapp.com/
@@ -114,3 +100,17 @@ Password: password
 #### Customer:
 Username: customer1@test.com,
 Password: password
+
+## Assumptions
+The application is designed as a standard customer support application.
+Some common-sense assumptions have been taken. Below is the list of a few of those assumptions:
+* The customers can register and login
+* The customers can create support requests and view status of their previous requests
+* The customers can close their own previous support requests
+* The customers can re-open their previous closed support requests
+* The agents can login but cannot register themselves
+* The agents can close but not re-open support requests
+* The admins can create other agents and admins but not other customers
+* The admins can close support requests but not delete any support requests
+* The admins can remove any agents and admins but not customers
+* The last agent and admin cannot be removed
