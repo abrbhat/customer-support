@@ -85,3 +85,20 @@ cd client
 grunt serve
 ```
 Open `localhost:9000` to view the app
+
+## Demo
+
+https://customer-support-84625.herokuapp.com/
+
+### Test credentials:
+#### Admin:
+Username: admin1@test.com
+Password: password
+
+#### Agent:
+Username: agent1@test.com
+Password: password
+
+#### Customer:
+Username: customer1@test.com
+Password: password
