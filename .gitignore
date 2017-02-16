@@ -20,8 +20,8 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-# Ignore public
-/public
+# Ignore public (Disabled)
+# /public
 
 # Ignore generated report
 report.pdf
