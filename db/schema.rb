@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170214174043) do
 
-  create_table "support_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "support_requests", force: :cascade do |t|
     t.text     "subject",     limit: 65535, null: false
     t.text     "description", limit: 65535
     t.datetime "closed_at"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170214174043) do
     t.index ["customer_id"], name: "index_support_requests_on_customer_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "provider",                             default: "email", null: false
     t.string   "uid",                                  default: "",      null: false
     t.string   "encrypted_password",                   default: "",      null: false
