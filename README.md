@@ -92,13 +92,13 @@ https://customer-support-84625.herokuapp.com/
 
 ### Test credentials:
 #### Admin:
-Username: admin1@test.com
+Username: admin1@test.com,
 Password: password
 
 #### Agent:
-Username: agent1@test.com
+Username: agent1@test.com,
 Password: password
 
 #### Customer:
-Username: customer1@test.com
+Username: customer1@test.com,
 Password: password
