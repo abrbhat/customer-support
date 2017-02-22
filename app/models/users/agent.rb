@@ -9,7 +9,7 @@ class Agent < User
 
   # Fetches support requests assigned to the agent which are currently open
   def open_support_requests
-    return self.support_requests.select{|support_request| support_request.is_open?}
+    return self.support_requests.where(status: "open")
   end
 
   private

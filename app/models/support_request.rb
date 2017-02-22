@@ -51,7 +51,7 @@ class SupportRequest < ApplicationRecord
   def set_or_unset_closed_at
     if self.status_changed? and
       if self.status == "closed"
-        self.closed_at = Time.now
+        self.closed_at = Time.current
       else
         self.closed_at = nil
       end
