@@ -30,3 +30,4 @@ report.pdf
 /config/application.yml
 
 # Ignore coverage reports
+/coverage
