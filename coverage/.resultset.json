@@ -98,11 +98,6 @@
         1,
         null
       ],
-      "/var/www/customer-support/app/models/application_record.rb": [
-        1,
-        1,
-        null
-      ],
       "/var/www/customer-support/app/models/support_request.rb": [
         null,
         null,
@@ -176,6 +171,11 @@
         null,
         null
       ],
+      "/var/www/customer-support/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
       "/var/www/customer-support/app/models/users/customer.rb": [
         null,
         null,
@@ -187,7 +187,7 @@
         1,
         null,
         1,
-        273,
+        276,
         null,
         null
       ],
@@ -218,12 +218,12 @@
         1,
         null,
         1,
-        38,
+        39,
         null,
         null,
         1,
         null,
-        38,
+        39,
         0,
         null,
         null,
@@ -568,6 +568,6 @@
         0
       ]
     },
-    "timestamp": 1487764881
+    "timestamp": 1487769293
   }
 }

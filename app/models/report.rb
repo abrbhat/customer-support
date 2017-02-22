@@ -1,6 +1,6 @@
 # This is a non-ORM class for generating report
 
-class Report < ApplicationRecord
+class Report
 
   # Generates a pdf file containing support requests closed within the last 1 month
   def self.generate
