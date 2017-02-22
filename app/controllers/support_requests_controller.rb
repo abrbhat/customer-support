@@ -26,7 +26,9 @@ class SupportRequestsController < ApplicationController
         @support_requests = current_user.support_requests
       end
 
-      @support_requests = @support_requests.sort.reverse
+      @support_requests = @support_requests.includes(:agent, :customer)
+                                           .sort
+                                           .reverse
     else
       # If a support request report is requested, check whether the requesting
       # user is an admin or an agent
@@ -36,6 +38,7 @@ class SupportRequestsController < ApplicationController
         # closed in the last 1 month
         @support_requests = SupportRequest.where(status: 'closed')
                                           .where('closed_at >= ?', 1.month.ago)
+                                          .includes(:agent, :customer)
                                           .sort
         respond_to do |format|
           format.pdf {

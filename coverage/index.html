@@ -14,7 +14,7 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2017-02-14T23:08:52+05:30">2017-02-14T23:08:52+05:30</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2017-02-22T17:31:21+05:30">2017-02-22T17:31:21+05:30</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         6.01
+         6.07
        </span>
     </span> hits/line)
   </h2>
@@ -93,11 +93,11 @@
       <tr>
         <td class="strong"><a href="#6632568b6c5096b5eb0668aaa7d800a70a43c780" class="src_link" title="app/controllers/support_requests_controller.rb">app/controllers/support_requests_controller.rb</a></td>
         <td class="yellow strong">88.1 %</td>
-        <td>117</td>
+        <td>120</td>
         <td>42</td>
         <td>37</td>
         <td>5</td>
-        <td>6.9</td>
+        <td>7.0</td>
       </tr>
       
       <tr>
@@ -137,7 +137,7 @@
         <td>30</td>
         <td>29</td>
         <td>1</td>
-        <td>12.1</td>
+        <td>12.3</td>
       </tr>
       
       <tr>
@@ -157,7 +157,7 @@
         <td>24</td>
         <td>22</td>
         <td>2</td>
-        <td>6.3</td>
+        <td>6.5</td>
       </tr>
       
       <tr>
@@ -193,7 +193,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.98
+         4.01
        </span>
     </span> hits/line)
   </h2>
@@ -261,11 +261,11 @@
       <tr>
         <td class="strong"><a href="#6632568b6c5096b5eb0668aaa7d800a70a43c780" class="src_link" title="app/controllers/support_requests_controller.rb">app/controllers/support_requests_controller.rb</a></td>
         <td class="yellow strong">88.1 %</td>
-        <td>117</td>
+        <td>120</td>
         <td>42</td>
         <td>37</td>
         <td>5</td>
-        <td>6.9</td>
+        <td>7.0</td>
       </tr>
       
       <tr>
@@ -290,7 +290,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         8.0
+         8.09
        </span>
     </span> hits/line)
   </h2>
@@ -342,7 +342,7 @@
         <td>30</td>
         <td>29</td>
         <td>1</td>
-        <td>12.1</td>
+        <td>12.3</td>
       </tr>
       
       <tr>
@@ -362,7 +362,7 @@
         <td>24</td>
         <td>22</td>
         <td>2</td>
-        <td>6.3</td>
+        <td>6.5</td>
       </tr>
       
       <tr>
@@ -1714,8 +1714,8 @@
           <code class="ruby">    # Check whether is report is requested</code>
         </li>
       
-        <li class="covered" data-hits="47" data-linenumber="13">
-          <span class="hits">47</span>
+        <li class="covered" data-hits="48" data-linenumber="13">
+          <span class="hits">48</span>
           
           <code class="ruby">    if params[:report].blank?</code>
         </li>
@@ -1732,8 +1732,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="45" data-linenumber="16">
-          <span class="hits">45</span>
+        <li class="covered" data-hits="46" data-linenumber="16">
+          <span class="hits">46</span>
           
           <code class="ruby">      if current_user.is_admin?</code>
         </li>
@@ -1750,8 +1750,8 @@
           <code class="ruby">        @support_requests = SupportRequest.all</code>
         </li>
       
-        <li class="covered" data-hits="33" data-linenumber="19">
-          <span class="hits">33</span>
+        <li class="covered" data-hits="34" data-linenumber="19">
+          <span class="hits">34</span>
           
           <code class="ruby">      elsif current_user.is_an_agent?</code>
         </li>
@@ -1774,8 +1774,8 @@
           <code class="ruby">        @support_requests = current_user.open_support_requests</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="23">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="32" data-linenumber="23">
+          <span class="hits">32</span>
           
           <code class="ruby">      elsif current_user.is_a_customer?</code>
         </li>
@@ -1792,8 +1792,8 @@
           <code class="ruby">        # by the customer</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="26">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="32" data-linenumber="26">
+          <span class="hits">32</span>
           
           <code class="ruby">        @support_requests = current_user.support_requests</code>
         </li>
@@ -1810,124 +1810,124 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="45" data-linenumber="29">
-          <span class="hits">45</span>
+        <li class="covered" data-hits="46" data-linenumber="29">
+          <span class="hits">46</span>
           
-          <code class="ruby">      @support_requests = @support_requests.sort.reverse</code>
+          <code class="ruby">      @support_requests = @support_requests.includes(:agent, :customer)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="30">
           
           
-          <code class="ruby">    else</code>
+          <code class="ruby">                                           .sort</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
           
           
-          <code class="ruby">      # If a support request report is requested, check whether the requesting</code>
+          <code class="ruby">                                           .reverse</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="32">
           
           
-          <code class="ruby">      # user is an admin or an agent</code>
+          <code class="ruby">    else</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
-          <code class="ruby">      if current_user.is_admin? or</code>
+          <code class="ruby">      # If a support request report is requested, check whether the requesting</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="34">
-          <span class="hits">2</span>
+        <li class="never" data-hits="" data-linenumber="34">
           
-          <code class="ruby">         current_user.is_an_agent?</code>
+          
+          <code class="ruby">      # user is an admin or an agent</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="35">
           
           
+          <code class="ruby">      if current_user.is_admin? or</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="36">
+          <span class="hits">2</span>
+          
+          <code class="ruby">         current_user.is_an_agent?</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
+          
+          
           <code class="ruby">        # If the requesting user is an admin or an agent, fetch all support requests</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="36">
-          
-          
-          <code class="ruby">        # closed in the last 1 month</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="37">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        @support_requests = SupportRequest.where(status: &#39;closed&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="38">
           
           
+          <code class="ruby">        # closed in the last 1 month</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="39">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        @support_requests = SupportRequest.where(status: &#39;closed&#39;)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="40">
+          
+          
           <code class="ruby">                                          .where(&#39;closed_at &gt;= ?&#39;, 1.month.ago)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="39">
+        <li class="never" data-hits="" data-linenumber="41">
+          
+          
+          <code class="ruby">                                          .includes(:agent, :customer)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="42">
           
           
           <code class="ruby">                                          .sort</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="40">
+        <li class="covered" data-hits="1" data-linenumber="43">
           <span class="hits">1</span>
           
           <code class="ruby">        respond_to do |format|</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="41">
+        <li class="covered" data-hits="1" data-linenumber="44">
           <span class="hits">1</span>
           
           <code class="ruby">          format.pdf {</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="42">
+        <li class="missed" data-hits="0" data-linenumber="45">
           
           
           <code class="ruby">            send_file Report.generate,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="46">
           
           
           <code class="ruby">                      :filename =&gt; &quot;report.pdf&quot;,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="never" data-hits="" data-linenumber="47">
           
           
           <code class="ruby">                      :type =&gt; &quot;application/pdf&quot;,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="48">
           
           
           <code class="ruby">                      :disposition  =&gt; &quot;attachment&quot;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="46">
-          
-          
-          <code class="ruby">          }</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="47">
-          <span class="hits">1</span>
-          
-          <code class="ruby">          format.json {</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="48">
-          <span class="hits">1</span>
-          
-          <code class="ruby">            render &quot;support_requests/index&quot;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="49">
@@ -1936,70 +1936,70 @@
           <code class="ruby">          }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="50">
-          
-          
-          <code class="ruby">        end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="51">
-          
-          
-          <code class="ruby">      else</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="52">
+        <li class="covered" data-hits="1" data-linenumber="50">
           <span class="hits">1</span>
           
-          <code class="ruby">        render json: {&quot;errors&quot; =&gt; [&quot;Inaccessible Resource&quot;]},</code>
+          <code class="ruby">          format.json {</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="51">
+          <span class="hits">1</span>
+          
+          <code class="ruby">            render &quot;support_requests/index&quot;</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="52">
+          
+          
+          <code class="ruby">          }</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="53">
           
           
-          <code class="ruby">               status: :unauthorized</code>
+          <code class="ruby">        end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="54">
           
           
-          <code class="ruby">        return</code>
+          <code class="ruby">      else</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="55">
+        <li class="covered" data-hits="1" data-linenumber="55">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">      end</code>
+          <code class="ruby">        render json: {&quot;errors&quot; =&gt; [&quot;Inaccessible Resource&quot;]},</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="56">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">               status: :unauthorized</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="57">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">        return</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="58">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="59">
           
           
-          <code class="ruby">  # GET /support_requests/1</code>
+          <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="60">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="60">
           
-          <code class="ruby">  def show</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="61">
@@ -2011,49 +2011,49 @@
         <li class="never" data-hits="" data-linenumber="62">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">  # GET /support_requests/1</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="63">
+        <li class="covered" data-hits="1" data-linenumber="63">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">  def show</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="64">
           
           
-          <code class="ruby">  # POST /support_requests</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="65">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="65">
           
-          <code class="ruby">  def create</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="66">
-          <span class="hits">1</span>
           
-          <code class="ruby">    @support_request = SupportRequest.new(support_request_params)</code>
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="67">
+        <li class="never" data-hits="" data-linenumber="66">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="68">
+        <li class="never" data-hits="" data-linenumber="67">
           
           
-          <code class="ruby">    # Set the current user as the creator of the support request</code>
+          <code class="ruby">  # POST /support_requests</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="68">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def create</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="69">
           <span class="hits">1</span>
           
-          <code class="ruby">    @support_request.customer = current_user</code>
+          <code class="ruby">    @support_request = SupportRequest.new(support_request_params)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="70">
@@ -2062,283 +2062,301 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="71">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="71">
           
-          <code class="ruby">    if @support_request.save</code>
+          
+          <code class="ruby">    # Set the current user as the creator of the support request</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="72">
           <span class="hits">1</span>
           
-          <code class="ruby">      render :show, status: :created</code>
+          <code class="ruby">    @support_request.customer = current_user</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="73">
           
           
-          <code class="ruby">    else</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="74">
+        <li class="covered" data-hits="1" data-linenumber="74">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">      render json: @support_request.errors, status: :unprocessable_entity</code>
+          <code class="ruby">    if @support_request.save</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="75">
+        <li class="covered" data-hits="1" data-linenumber="75">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">      render :show, status: :created</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="76">
           
           
-          <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="77">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="78">
-          
-          
-          <code class="ruby">  # PATCH/PUT /support_requests/1</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="79">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def update</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="80">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    if @support_request.update(support_request_params)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="81">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      render :show, status: :ok</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="82">
-          
-          
           <code class="ruby">    else</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="83">
+        <li class="missed" data-hits="0" data-linenumber="77">
           
           
           <code class="ruby">      render json: @support_request.errors, status: :unprocessable_entity</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="84">
+        <li class="never" data-hits="" data-linenumber="78">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="85">
+        <li class="never" data-hits="" data-linenumber="79">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="86">
+        <li class="never" data-hits="" data-linenumber="80">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="87">
+        <li class="never" data-hits="" data-linenumber="81">
+          
+          
+          <code class="ruby">  # PATCH/PUT /support_requests/1</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="82">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def update</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="83">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    if @support_request.update(support_request_params)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="84">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      render :show, status: :ok</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="85">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="86">
+          
+          
+          <code class="ruby">      render json: @support_request.errors, status: :unprocessable_entity</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="87">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="88">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="89">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="90">
           <span class="hits">1</span>
           
           <code class="ruby">  private</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="88">
+        <li class="covered" data-hits="1" data-linenumber="91">
           <span class="hits">1</span>
           
           <code class="ruby">    def check_and_set_support_request</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="89">
+        <li class="covered" data-hits="6" data-linenumber="92">
           <span class="hits">6</span>
           
           <code class="ruby">      @support_request = SupportRequest.find(params[:id])</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="90">
+        <li class="never" data-hits="" data-linenumber="93">
           
           
           <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="91">
-          
-          
-          <code class="ruby">      unless current_user.is_admin? or</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="92">
-          <span class="hits">6</span>
-          
-          <code class="ruby">             @support_request.in? current_user.support_requests</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="93">
-          
-          
-          <code class="ruby">        render json: {&quot;errors&quot; =&gt; [&quot;Inaccessible Resource&quot;]},</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="94">
           
           
-          <code class="ruby">               status: :unauthorized</code>
+          <code class="ruby">      unless current_user.is_admin? or</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="95">
+        <li class="covered" data-hits="6" data-linenumber="95">
+          <span class="hits">6</span>
           
-          
-          <code class="ruby">        return</code>
+          <code class="ruby">             @support_request.in? current_user.support_requests</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="96">
-          
-          
-          <code class="ruby">      end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="97">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="98">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="99">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    def check_if_customer</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="100">
-          <span class="hits">1</span>
-          
-          <code class="ruby">      unless current_user.is_a_customer?</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="101">
+        <li class="missed" data-hits="0" data-linenumber="96">
           
           
           <code class="ruby">        render json: {&quot;errors&quot; =&gt; [&quot;Inaccessible Resource&quot;]},</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="102">
+        <li class="never" data-hits="" data-linenumber="97">
           
           
           <code class="ruby">               status: :unauthorized</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="103">
+        <li class="never" data-hits="" data-linenumber="98">
           
           
           <code class="ruby">        return</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="104">
+        <li class="never" data-hits="" data-linenumber="99">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="105">
+        <li class="never" data-hits="" data-linenumber="100">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="106">
+        <li class="never" data-hits="" data-linenumber="101">
           
           
           <code class="ruby"></code>
         </li>
       
+        <li class="covered" data-hits="1" data-linenumber="102">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def check_if_customer</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="103">
+          <span class="hits">1</span>
+          
+          <code class="ruby">      unless current_user.is_a_customer?</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="104">
+          
+          
+          <code class="ruby">        render json: {&quot;errors&quot; =&gt; [&quot;Inaccessible Resource&quot;]},</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="105">
+          
+          
+          <code class="ruby">               status: :unauthorized</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="106">
+          
+          
+          <code class="ruby">        return</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="107">
           
           
-          <code class="ruby">    # Only allow a trusted parameter &quot;white list&quot; through.</code>
+          <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="108">
-          <span class="hits">1</span>
-          
-          <code class="ruby">    def support_request_params</code>
-        </li>
-      
-        <li class="covered" data-hits="3" data-linenumber="109">
-          <span class="hits">3</span>
-          
-          <code class="ruby">      params.require(:support_request).permit(</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="110">
-          
-          
-          <code class="ruby">        :subject,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="111">
-          
-          
-          <code class="ruby">        :description,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="112">
-          
-          
-          <code class="ruby">        :status,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="113">
-          
-          
-          <code class="ruby">        :severity,</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="114">
-          
-          
-          <code class="ruby">        :category</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="115">
-          
-          
-          <code class="ruby">      )</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="116">
+        <li class="never" data-hits="" data-linenumber="108">
           
           
           <code class="ruby">    end</code>
         </li>
       
+        <li class="never" data-hits="" data-linenumber="109">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="110">
+          
+          
+          <code class="ruby">    # Only allow a trusted parameter &quot;white list&quot; through.</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="111">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    def support_request_params</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="112">
+          <span class="hits">3</span>
+          
+          <code class="ruby">      params.require(:support_request).permit(</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="113">
+          
+          
+          <code class="ruby">        :subject,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="114">
+          
+          
+          <code class="ruby">        :description,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="115">
+          
+          
+          <code class="ruby">        :status,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="116">
+          
+          
+          <code class="ruby">        :severity,</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="117">
+          
+          
+          <code class="ruby">        :category</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="118">
+          
+          
+          <code class="ruby">      )</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="119">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="120">
           
           
           <code class="ruby">end</code>
@@ -3004,14 +3022,14 @@
           <code class="ruby">  def init</code>
         </li>
       
-        <li class="covered" data-hits="72" data-linenumber="44">
-          <span class="hits">72</span>
+        <li class="covered" data-hits="75" data-linenumber="44">
+          <span class="hits">75</span>
           
           <code class="ruby">    self.status ||= &quot;open&quot;</code>
         </li>
       
-        <li class="covered" data-hits="72" data-linenumber="45">
-          <span class="hits">72</span>
+        <li class="covered" data-hits="75" data-linenumber="45">
+          <span class="hits">75</span>
           
           <code class="ruby">    self.severity ||= &quot;low&quot;</code>
         </li>
@@ -3403,7 +3421,7 @@
         <li class="covered" data-hits="3" data-linenumber="12">
           <span class="hits">3</span>
           
-          <code class="ruby">    return self.support_requests.select{|support_request| support_request.is_open?}</code>
+          <code class="ruby">    return self.support_requests.where(status: &quot;open&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
@@ -3436,8 +3454,8 @@
           <code class="ruby">  def init</code>
         </li>
       
-        <li class="covered" data-hits="123" data-linenumber="18">
-          <span class="hits">123</span>
+        <li class="covered" data-hits="126" data-linenumber="18">
+          <span class="hits">126</span>
           
           <code class="ruby">    self.type ||= &quot;agent&quot;</code>
         </li>
