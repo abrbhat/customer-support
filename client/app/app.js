@@ -19,17 +19,6 @@ var app = angular.module('customerSupportApp', [
     'ng-token-auth'
 ]);
 
-// app.service('authInterceptor', ['$q', function($q) {
-//     var service = this;
-//
-//     service.responseError = function(response) {
-//       if (response.status === 401){
-//         window.location = "#/user/login";
-//       }
-//       return $q.reject(response);
-//     };
-// }]);
-
 app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
 
