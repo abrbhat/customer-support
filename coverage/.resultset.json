@@ -198,13 +198,13 @@
         1,
         null,
         1,
+        null,
+        1,
         null
       ],
       "/var/www/customer-support/app/controllers/users_controller.rb": [
         null,
         1,
-        1,
-        null,
         1,
         null,
         null,
@@ -234,8 +234,6 @@
       "/var/www/customer-support/app/controllers/support_requests_controller.rb": [
         null,
         1,
-        1,
-        null,
         null,
         1,
         null,
@@ -356,8 +354,6 @@
       "/var/www/customer-support/app/controllers/admins_controller.rb": [
         null,
         1,
-        1,
-        null,
         null,
         1,
         null,
@@ -419,8 +415,6 @@
       "/var/www/customer-support/app/controllers/agents_controller.rb": [
         null,
         1,
-        1,
-        null,
         null,
         1,
         null,
@@ -482,8 +476,6 @@
       "/var/www/customer-support/app/controllers/customers_controller.rb": [
         null,
         1,
-        1,
-        null,
         null,
         1,
         null,
@@ -568,6 +560,6 @@
         0
       ]
     },
-    "timestamp": 1487769293
+    "timestamp": 1487770157
   }
 }

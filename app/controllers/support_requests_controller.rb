@@ -1,7 +1,5 @@
 # Handles requests to /api/support_requests
 class SupportRequestsController < ApplicationController
-  before_filter :authenticate_user!, except: :download_report
-
   # Limit access to creating a support request only to a customer
   before_action :check_if_customer, only: :create
 

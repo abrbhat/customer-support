@@ -1,7 +1,5 @@
 # Handles requests to /api/agents
 class AgentsController < ApplicationController
-  before_filter :authenticate_user!
-
   # Limit access to admins
   before_action :check_if_admin
 
