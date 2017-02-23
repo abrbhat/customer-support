@@ -129,14 +129,14 @@ app.config(function($httpProvider){
         }
         else if(rejection.status === 404){
           window.alert("Requested resource could not be found");
-          $location.url('/support-request/list');
+          $location.url('/user-login');
         }
         else if(rejection.status === 0){
           window.alert("Cannot reach the server. Try again later.");
         }
         else{
           window.alert("We encountered an error. Please try again later.");
-          $location.url('/support-request/list');
+          $location.url('/user-login');
         }
 
         return $q.reject(rejection);
