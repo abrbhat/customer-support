@@ -131,6 +131,9 @@ app.config(function($httpProvider){
           window.alert("Requested resource could not be found");
           $location.url('/user-login');
         }
+        else if(rejection.status === 422){
+          // Do nothing if unprocessable entity
+        }
         else if(rejection.status === 0){
           window.alert("Cannot reach the server. Try again later.");
         }
