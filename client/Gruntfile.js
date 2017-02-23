@@ -87,12 +87,12 @@ module.exports = function (grunt) {
         livereload: 35729
       },
       proxies: [
-			        {
-			          context: '/api',
-			          host: 'localhost',
-			          port: 3000
-			        }
-			      ],
+        {
+          context: '/api',
+          host: 'localhost',
+          port: 3000
+        }
+      ],
       livereload: {
         options: {
           open: false,

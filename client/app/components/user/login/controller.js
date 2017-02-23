@@ -13,6 +13,8 @@ angular.module('customerSupportApp')
      * Sets $scope.error on receiving login error broadcast
      */
     $scope.$on('auth:login-error', function(event, reason) {
-      $scope.error = reason.errors[0];
+      if(reason){
+        $scope.error = reason.errors[0];
+      }
     });
 }]);

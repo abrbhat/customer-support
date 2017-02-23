@@ -58,4 +58,12 @@ angular.module('customerSupportApp')
       window.alert('Error ' + error);
     });
   };
+
+  /**
+   * [viewSupportRequest Makes state go to support request detail view]
+   * @param  {Integer} supportRequestId Support request id
+   */
+  $scope.viewSupportRequest = function(supportRequestId){
+    $state.go('supportRequest-view', {id: supportRequestId});
+  };
 }]);
