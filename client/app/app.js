@@ -144,6 +144,7 @@ app.run(['$rootScope', '$state', '$auth', '$timeout', 'User',
       User.remote.get({id: user.id}).$promise
       .then(function(user){
         $rootScope.currentUser = user;
+        $state.go('supportRequest-list');
       });
     }
   });
