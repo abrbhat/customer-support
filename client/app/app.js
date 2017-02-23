@@ -115,11 +115,28 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 });
 
 app.config(function($httpProvider){
-  $httpProvider.interceptors.push(function($q, $location) {
+  $httpProvider.interceptors.push(function($q, $location, $rootScope) {
     return {
       responseError: function(rejection) {
-        if(rejection.status === 401){
-          $location.url('/user/login');
+        if((rejection.status === 401) ||
+           (rejection.status === 403)){
+          window.alert("Resource is forbidden. Please reauthorize.");
+          $rootScope.currentUser = null;
+          $rootScope.signOut()
+          .finally(function(){
+            $location.url('/user/login');
+          });
+        }
+        else if(rejection.status === 404){
+          window.alert("Requested resource could not be found");
+          $location.url('/support-request/list');
+        }
+        else if(rejection.status === 0){
+          window.alert("Cannot reach the server. Try again later.");
+        }
+        else{
+          window.alert("We encountered an error. Please try again later.");
+          $location.url('/support-request/list');
         }
 
         return $q.reject(rejection);
